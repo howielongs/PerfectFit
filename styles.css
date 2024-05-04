@@ -1,16 +1,25 @@
-.container {display: inline-block;}
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+
+.container {
+    display: inline-block;
+    position: fixed;
+    top: 0; /* Moves the container to the top edge of the viewport */
+    left: 0; /* Moves the container to the left edge of the viewport */
+    padding-inline: min(4vw, 20px); /* Adjusts horizontal padding based on screen width */
+    max-width: 100%; /* Ensure container does not overflow the screen width */
+    justify-content: center;
+    align-items: center;
+}
 
 .text{
-    font-size: 2em;
+    font-size: calc(1em + 1vw); /* Scales font size with viewport width */
     letter-spacing: 10px;
     font-family: monospace;
     border-right: 5px solid;
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
-    animation:
-        typing 2s steps(10),
-        cursor 0.4s step-end infinite alternate;
+    animation: typing 1.5s steps(10), cursor 0.4s step-end infinite alternate;
 }
 
 @keyframes cursor {
@@ -19,4 +28,1394 @@
 
 @keyframes typing {
     from { width: 0 }
+}
+
+.hoodie, .pant {
+    padding: min(5vh, 10vw); /* Adjusts padding based on viewport size */
+}
+
+/* For better control, consider adding responsive breakpoints */
+@media (max-width: 768px) {
+    .hoodie, .pant {
+    transform: translate(-50%, -50%); /* Adjusts position for smaller screens */
+    }
+}
+
+.headwear{
+    margin: 0;
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, 10%);
+}
+
+.hoodie{
+    margin: 0;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -30%);
+    z-index: 2;
+}
+
+.pant{
+    margin: 0;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, 45%);
+    z-index: 1;
+}
+
+.shoes {
+    position: absolute;
+    bottom: 5%; /* Adjust this value based on actual layout needs */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+.headwearNextButton{
+    position: absolute;
+    top: 18%;
+    right: 25%;
+    cursor: pointer;
+}
+
+.headwearPrevButton{
+    position: absolute;
+    top: 18%;
+    left: 25%;
+    cursor: pointer;
+}
+
+.hoodieNextButton{
+    position: absolute;
+    top: 40%;
+    right: 25%;
+    cursor: pointer;
+}
+
+.hoodiePrevButton{
+    position: absolute;
+    top: 40%;
+    left: 25%;
+    cursor: pointer;
+}
+
+.pantsNextButton{
+    position: absolute;
+    top: 60%;
+    right: 25%;
+    cursor: pointer;
+}
+
+.pantsPrevButton{
+    position: absolute;
+    top: 60%;
+    left: 25%;
+    cursor: pointer;
+}
+
+.shoesNextButton{
+    position: absolute;
+    bottom: 15%;
+    right: 25%;
+    cursor: pointer;
+}
+
+.shoesPrevButton{
+    position: absolute;
+    bottom: 15%;
+    left: 25%;
+    cursor: pointer;
+}
+
+/* Consider adjusting size or position on smaller screens
+@media (max-width: 768px) {
+.nextButton, .prevButton {
+top: 45%; /* Adjusts position slightly for better visibility
+}
+}
+*/
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: white;
+}
+
+.navigation {
+    position: fixed;
+    top: 25px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    border-radius: 50%;
+    transition: 0.5s;
+    transition-delay: 0.3s;
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+}
+
+.navigation.active {
+    width: 350px;   
+}
+
+/*Made two functions below make th emenu a bit
+smaller not sure how it looks on small screen
+but works dosent overlap as much*/
+
+@media (max-width: 768px) {
+    .navigation.active {
+    width: 50%; /* Allows more space for navigation items on small screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .text, .navigation li {
+    font-size: calc(0.5em + 1vw); /* Slightly smaller font size, but still responsive */
+    }
+}
+
+/* Original style for the toggleMenu, assuming initial position */
+.toggleMenu {
+    transition: right 0.3s ease; /* Smooth transition */
+    /* other styles */
+}
+
+/* New class .moveRight for when the "+" is hovered */
+.toggleMenu.moveRight {
+    right: 100px; /* Adjust this value based on your layout */
+}
+
+.navigation .toggleMenu {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    border-radius: 50%;
+    transition: 0.5s;
+    cursor: pointer;
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-delay: 0.3s;
+}
+
+.navigation.active .toggleMenu {
+    background: #ff4181;
+    transition-delay: 0s;
+    transform: translateY(60px);
+    width: 30px;
+    height: 30px;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+}
+
+.navigation .toggleMenu::before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    border-radius: 3px;
+    background: #333;
+    transform: translateY(-5px);
+    transition: 0.4s;
+    transition-delay: 0.4s;
+}
+
+.navigation .toggleMenu::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    border-radius: 3px;
+    background: #333;
+    transform: translateY(5px);
+    transition: 0.4s;
+}
+
+.navigation.active .toggleMenu::before {
+    transition-delay: 0.3s;
+    background: #fff;
+    transform: translateY(0px) rotate(45deg) scale(0.6);
+}
+
+.navigation.active .toggleMenu::after {
+    transition-delay: 0.3s;
+    background: #fff;
+    transform: translateY(0px) rotate(315deg) scale(0.6);
+}
+
+.navigation li {
+    font-family: monospace;
+    font-size: 20px;
+    list-style: none;
+    transition: 0.5s;
+    transform: scale(0);
+}
+
+.navigation.active li {
+    transition-delay: 0.75s;
+    display: flex;
+    transform: scale(1);
+}
+
+.navigation li a {
+    text-decoration: none;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 5px 15px;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.navigation li a:hover, .navigation li a:focus, .navigation li a:active {
+    background-color: #ff4181; /* The color you want for the highlight */
+    transform: translateY(-10px); /* Lifts the icon up when hovered */
+    /* Optional: add a shadow for depth, adjust as needed */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    top: -50%;
+}
+
+.navigation li a:hover {
+    background: #ff4181;
+    color: white;
+}
+
+.dropdown-menu label {
+    font-family: monospace;
+    font-size: 10px;
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+
+.dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: whitesmoke;
+    left: 20%;
+    color: black;
+    text-decoration: none;
+    padding: 10px 15px;
+    min-width: 10px;
+    width: 95px;
+    z-index: 1000;
+    box-shadow: 2px 2px 5px black;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu label:hover {
+    color: white;
+    background-color: black;
+    cursor: pointer;
+}
+
+
+.bottom-navigation {
+    position: fixed; /* Fixes the navigation bar at a specific position */
+    bottom: 0; /* Aligns the navigation bar at the bottom of the viewport */
+    left: 0;
+    width: 100%; /* Ensures the navigation bar spans the entire width of the viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff; /* Consider adding a background color for visibility */
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* Optional: adds a slight shadow for depth */
+    padding: 15px 0; /* Increases padding at the top and bottom */
+    z-index: 11; /* Higher than the side page's z-index */
+}
+
+.bottom-navigation ul {
+    list-style: none; /* Removes default list styling */
+    display: flex; /* Enables flexbox layout for the list */
+    padding: 0; /* Removes default padding */
+    margin: 0; /* Removes default margin */
+}
+
+.bottom-navigation .list {
+    margin: 0 40px; /* Space between navigation items */
+    position: relative; /* For positioning the indicator */
+    z-index: 12; /* Optionally ensure list items are above the navigation background */
+}
+
+.bottom-navigation .list a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+    position: relative;
+    height: 100%;
+}
+
+.bottom-navigation .list a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 40px;
+    height: 40px;
+    margin-left: -0.5px;
+    margin-top: -20px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 1px solid black; /* Adds a solid black outline */
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translate(-50%, -50%) scale(0); /* Adjust for initial state */
+    z-index: -1;
+}
+
+.bottom-navigation .list:hover a::before, .bottom-navigation .list a.active::before {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.5);
+}
+
+.bottom-navigation .list a img {
+    transition: transform 0.3s ease;
+}
+
+.bottom-navigation .list:hover a img, .bottom-navigation .list a.active img {
+    transform: translateY(-10px);
+}
+
+.bottom-navigation .text {
+    margin-top: 10px;
+    font-size: 0.8em;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-right: 2px solid black;  /* Makes it look like a cursor */
+    animation: typing 1.5s steps(10, end) infinite, blink-caret .75s step-end infinite;
+}
+
+.bottom-navigation .list:hover .text, .bottom-navigation .list:focus-within .text, .bottom-navigation .list a.active .text {
+    opacity: 1;
+}
+
+.bottom-icon img {
+    vertical-align: middle;
+}
+
+.headwear-page {
+    padding-top: 8px; /* Add some padding to the top of the side page for the title */
+    position: fixed;
+    top: 80px; /* Adjust based on your container's height */
+    bottom: 80px; /* Adjust based on your bottom navigation's height */
+    left: 0;
+    width: 22.5%;
+    background-color: #ffffff; /* White background for a clean look */
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+    z-index: 10;
+    overflow-y: auto;
+    border-radius: 0 20px 20px 0; /* Rounded corners for a modern feel */
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.05); /* Soft shadow for depth */
+    border: 1px solid #eaeaea; /* Light border for subtle definition */
+    color: #333; /* Dark text for contrast */
+    font-family: monospace;
+}
+
+.headwear-title {
+    all: unset; /* Removes default button styling */
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem; /* Example size, adjust based on your actual setup */
+    letter-spacing: 0.36em; /* Adjust to match the bottom nav text spacing */
+    font-weight: bold;
+    margin: 20px auto; /* Center the title */
+    padding: 10px 20px; /* Adjust padding as needed */
+    display: block; /* Change to block for full-width and auto centering */
+    background-color: #ff4181; /* Updated background color */
+    border-radius: 50px; /* Pill shape */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), /* Outer shadow for 3D effect */
+            0 6px 20px rgba(0, 0, 0, 0.19), /* Additional depth */
+            inset 0 1px 4px rgba(255, 255, 255, 0.3), /* Inner highlight for more depth */
+            inset 0 -3px 4px rgba(0, 0, 0, 0.2); /* Inner shadow for sunk-in effect */
+    color: #ffffff; /* Updated text color */
+    width: fit-content; /* Allows the background to fit the text size */
+    margin-left: auto; /* Together with margin-right: auto, centers the title */
+    margin-right: auto;
+    max-width: 80%;
+}
+
+.headwear-title:hover {
+    transform: translateY(-10px);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.headwear-page.active {
+    transform: translateX(0); /* Slide in to view */
+}
+
+.headwear-page .text, .headwear-page h2 {
+    padding: 0 20px; /* Add padding to the sides */
+    font-size: calc(0.5vw + 0.5rem); /* Combine viewport width and a minimum size */
+    word-wrap: break-word; /* Ensure long words don't overflow */
+}
+
+.headwear-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Columns */
+    gap: 10px;
+    padding: 20px;
+    max-height: calc(100% - 40px); /* Subtracting vertical padding */
+    overflow-y: auto; /* Allows scrolling if more items are added */
+}
+
+.headwear-item, .headwear-placeholder {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    justify-self: center;
+}
+
+.headwear-item {
+    position: relative;
+    width: 100%;
+    height: 100px; /* Fixed height to maintain uniformity */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease;
+    overflow: visible;
+    z-index: 1;
+}
+
+.headwear-item:hover {
+    z-index: 3;
+}
+
+.headwear-item img {
+    max-width: 80%;
+    max-height: 80%;
+}
+
+
+.headwear-info-card {
+    position: absolute;
+    bottom: -100px;  /* Adjust so it's just below the item */
+    left: 0;
+    width: 100%; /* Matches the width of the headwear item */
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 2; /* Ensure this is higher than the item's z-index */
+}
+
+.headwear-item:hover .headwear-info-card {
+    opacity: 1;
+    visibility: visible;
+    bottom: -140; /* Position it directly at the bottom of the item */
+}
+
+.headwear-item-info {
+    margin: 10px 0;
+    font-size: 14px; /* Adjust size as needed */
+}
+
+
+.headwear-item-info strong {
+    margin-right: 5px; /* Space between label and editable text */
+}
+
+.headwear-item-name, .headwear-item-brand {
+    display: inline-block; /* Makes span behave more like an input */
+    min-width: 50px; /* Ensures the editable area is sufficiently wide */
+    background: rgba(255, 255, 255, 0.5); /* Light background for editable areas */
+    border-bottom: 1px dashed #ccc; /* Underline style to indicate editability */
+}
+
+
+.headwear-edit-btn {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.headwear-edit-btn:hover {
+    background-color: #45a049;
+}
+
+.headwear-placeholder {
+    background-color: #f0f0f0;
+    border-radius: 50%;
+}
+
+/* Combine hover effects for both headwear items and placeholders */
+.headwear-item:hover, .headwear-placeholder:hover {
+    transform: translateY(-10px); /* Hover effect */
+    cursor: pointer; /* Change cursor to indicate clickable */
+    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.headwear-page .headwear-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Adjust size as needed */
+    height: 100%; /* Adjust size as needed */
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.headwear-page .headwear-item:hover {
+    transform: translateY(-10px); /* Hover effect */
+}
+
+/* Hoodie SidePage */
+
+.hoodies-page {
+    padding-top: 8px; /* Add some padding to the top of the side page for the title */
+    position: fixed;
+    top: 80px; /* Adjust based on your container's height */
+    bottom: 80px; /* Adjust based on your bottom navigation's height */
+    left: 0;
+    width: 22.5%;
+    background-color: #ffffff; /* White background for a clean look */
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+    z-index: 10;
+    overflow-y: auto;
+    border-radius: 0 20px 20px 0; /* Rounded corners for a modern feel */
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.05); /* Soft shadow for depth */
+    border: 1px solid #eaeaea; /* Light border for subtle definition */
+    color: #333; /* Dark text for contrast */
+    font-family: monospace;
+}
+
+.hoodies-title {
+    all: unset; /* Removes default button styling */
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem; /* Example size, adjust based on your actual setup */
+    letter-spacing: 0.36em; /* Adjust to match the bottom nav text spacing */
+    font-weight: bold;
+    margin: 20px auto; /* Center the title */
+    padding: 10px 20px; /* Adjust padding as needed */
+    display: block; /* Change to block for full-width and auto centering */
+    background-color: #ff4181; /* Updated background color */
+    border-radius: 50px; /* Pill shape */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), /* Outer shadow for 3D effect */
+                0 6px 20px rgba(0, 0, 0, 0.19), /* Additional depth */
+                inset 0 1px 4px rgba(255, 255, 255, 0.3), /* Inner highlight for more depth */
+                inset 0 -3px 4px rgba(0, 0, 0, 0.2); /* Inner shadow for sunk-in effect */
+    color: #ffffff; /* Updated text color */
+    width: fit-content; /* Allows the background to fit the text size */
+    margin-left: auto; /* Together with margin-right: auto, centers the title */
+    margin-right: auto;
+    max-width: 80%;
+}
+
+.hoodies-title:hover {
+    transform: translateY(-10px);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.hoodies-page.active {
+    transform: translateX(0); /* Slide in to view */
+}
+
+.hoodies-page .text, .hoodies-page h2 {
+    padding: 0 20px; /* Add padding to the sides */
+    font-size: calc(0.5vw + 0.5rem); /* Combine viewport width and a minimum size */
+    word-wrap: break-word; /* Ensure long words don't overflow */
+}
+
+.hoodies-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Columns */
+    gap: 10px;
+    padding: 20px;
+    max-height: calc(100% - 40px); /* Subtracting vertical padding */
+    overflow-y: auto; /* Allows scrolling if more items are added */
+}
+
+.hoodies-item, .hoodies-placeholder {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    justify-self: center;
+}
+
+.hoodies-item {
+    position: relative;
+    width: 100%;
+    height: 100px; /* Fixed height to maintain uniformity */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease;
+    overflow: visible;
+    z-index: 1;
+}
+
+.hoodies-item:hover {
+    z-index: 3;
+}
+
+.hoodies-item img {
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.hoodies-info-card {
+    position: absolute;
+    bottom: -100px;  /* Adjust so it's just below the item */
+    left: 0;
+    width: 100%; /* Matches the width of the hoodie item */
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 2; /* Ensure this is higher than the item's z-index */
+}
+
+.hoodies-item:hover .hoodies-info-card {
+    opacity: 1;
+    visibility: visible;
+    bottom: -140; /* Position it directly at the bottom of the item */
+}
+
+.hoodies-item-info {
+    margin: 10px 0;
+    font-size: 14px; /* Adjust size as needed */
+}
+
+.hoodies-item-info strong {
+    margin-right: 5px; /* Space between label and editable text */
+}
+
+.hoodies-item-name, .hoodies-item-brand {
+    display: inline-block; /* Makes span behave more like an input */
+    min-width: 50px; /* Ensures the editable area is sufficiently wide */
+    background: rgba(255, 255, 255, 0.5); /* Light background for editable areas */
+    border-bottom: 1px dashed #ccc; /* Underline style to indicate editability */
+}
+
+.hoodies-edit-btn {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.hoodies-edit-btn:hover {
+    background-color: #45a049;
+}
+
+.hoodies-placeholder {
+    background-color: #f0f0f0;
+    border-radius: 50%;
+}
+
+/* Combine hover effects for both hoodie items and placeholders */
+.hoodies-item:hover, .hoodies-placeholder:hover {
+    transform: translateY(-10px); /* Hover effect */
+    cursor: pointer; /* Change cursor to indicate clickable */
+    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.hoodies-page .hoodies-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Adjust size as needed */
+    height: 100%; /* Adjust size as needed */
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.hoodies-page .hoodies-item:hover {
+    transform: translateY(-10px); /* Hover effect */
+}
+
+/* Pants SidePage */
+
+.pants-page {
+    padding-top: 8px; /* Add some padding to the top of the side page for the title */
+    position: fixed;
+    top: 80px; /* Adjust based on your container's height */
+    bottom: 80px; /* Adjust based on your bottom navigation's height */
+    right: 0;
+    width: 22.5%;
+    background-color: #ffffff; /* White background for a clean look */
+    transform: translateX(100%); /* Start hidden on the right */
+    transition: transform 0.5s ease;
+    z-index: 10;
+    overflow-y: auto;
+    border-radius: 20px 0 0 20px; /* Rounded corners for a modern feel, adjusted for right side */
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.05); /* Adjust shadow direction for right side */
+    border: 1px solid #eaeaea; /* Light border for subtle definition */
+    color: #333; /* Dark text for contrast */
+    font-family: monospace;
+}
+
+.pants-title {
+    all: unset; /* Removes default button styling */
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem; /* Example size, adjust based on your actual setup */
+    letter-spacing: 0.36em; /* Adjust to match the bottom nav text spacing */
+    font-weight: bold;
+    margin: 20px auto; /* Center the title */
+    padding: 10px 20px; /* Adjust padding as needed */
+    display: block; /* Change to block for full-width and auto centering */
+    background-color: #ff4181; /* Updated background color */
+    border-radius: 50px; /* Pill shape */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), /* Outer shadow for 3D effect */
+                0 6px 20px rgba(0, 0, 0, 0.19), /* Additional depth */
+                inset 0 1px 4px rgba(255, 255, 255, 0.3), /* Inner highlight for more depth */
+                inset 0 -3px 4px rgba(0, 0, 0, 0.2); /* Inner shadow for sunk-in effect */
+    color: #ffffff; /* Updated text color */
+    width: fit-content; /* Allows the background to fit the text size */
+    margin-left: auto; /* Together with margin-right: auto, centers the title */
+    margin-right: auto;
+    max-width: 80%;
+}
+
+.pants-title:hover {
+    transform: translateY(-10px);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.pants-page.active {
+    transform: translateX(0); /* Slide in to view */
+}
+
+.pants-page .text, .pants-page h2 {
+    padding: 0 20px; /* Add padding to the sides */
+    font-size: calc(0.5vw + 0.5rem); /* Combine viewport width and a minimum size */
+    word-wrap: break-word; /* Ensure long words don't overflow */
+}
+
+.pants-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Columns */
+    gap: 10px;
+    padding: 20px;
+    max-height: calc(100% - 40px); /* Subtracting vertical padding */
+    overflow-y: auto; /* Allows scrolling if more items are added */
+}
+
+.pants-item, .pants-placeholder {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    justify-self: center;
+}
+
+.pants-item {
+    position: relative;
+    width: 100%;
+    height: 100px; /* Fixed height to maintain uniformity */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease;
+    overflow: visible;
+    z-index: 1;
+}
+
+.pant-item:hover {
+    z-index: 3;
+}
+
+.pants-item img {
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.pants-info-card {
+    position: absolute;
+    bottom: -100px;  /* Adjust so it's just below the item */
+    left: 0;
+    width: 100%; /* Matches the width of the pants item */
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 2; /* Ensure this is higher than the item's z-index */
+}
+
+.pants-item:hover .pants-info-card {
+    opacity: 1;
+    visibility: visible;
+    bottom: -140; /* Position it directly at the bottom of the item */
+}
+
+.pants-item-info {
+    margin: 10px 0;
+    font-size: 14px; /* Adjust size as needed */
+}
+
+.pants-item-info strong {
+    margin-right: 5px; /* Space between label and editable text */
+}
+
+.pants-item-name, .pants-item-brand {
+    display: inline-block; /* Makes span behave more like an input */
+    min-width: 50px; /* Ensures the editable area is sufficiently wide */
+    background: rgba(255, 255, 255, 0.5); /* Light background for editable areas */
+    border-bottom: 1px dashed #ccc; /* Underline style to indicate editability */
+}
+
+.pants-edit-btn {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.pants-edit-btn:hover {
+    background-color: #45a049;
+}
+
+.pants-placeholder {
+    background-color: #f0f0f0;
+    border-radius: 50%;
+}
+
+/* Combine hover effects for both hoodie items and placeholders */
+.pants-item:hover, .pants-placeholder:hover {
+    transform: translateY(-10px); /* Hover effect */
+    cursor: pointer; /* Change cursor to indicate clickable */
+    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.pants-page .pants-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Adjust size as needed */
+    height: 100%; /* Adjust size as needed */
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.pants-page .pants-item:hover {
+    transform: translateY(-10px); /* Hover effect */
+}
+
+/* Shoes SidePage */
+
+.shoes-page {
+    padding-top: 8px; /* Add some padding to the top of the side page for the title */
+    position: fixed;
+    top: 80px; /* Adjust based on your container's height */
+    bottom: 80px; /* Adjust based on your bottom navigation's height */
+    right: 0;
+    width: 22.5%;
+    background-color: #ffffff; /* White background for a clean look */
+    transform: translateX(100%); /* Start hidden on the right */
+    transition: transform 0.5s ease;
+    z-index: 10;
+    overflow-y: auto;
+    border-radius: 20px 0 0 20px; /* Rounded corners for a modern feel, adjusted for right side */
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.05); /* Adjust shadow direction for right side */
+    border: 1px solid #eaeaea; /* Light border for subtle definition */
+    color: #333; /* Dark text for contrast */
+    font-family: monospace;
+}
+
+.shoes-title {
+    all: unset; /* Removes default button styling */
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem; /* Example size, adjust based on your actual setup */
+    letter-spacing: 0.36em; /* Adjust to match the bottom nav text spacing */
+    font-weight: bold;
+    margin: 20px auto; /* Center the title */
+    padding: 10px 20px; /* Adjust padding as needed */
+    display: block; /* Change to block for full-width and auto centering */
+    background-color: #ff4181; /* Updated background color */
+    border-radius: 50px; /* Pill shape */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), /* Outer shadow for 3D effect */
+                0 6px 20px rgba(0, 0, 0, 0.19), /* Additional depth */
+                inset 0 1px 4px rgba(255, 255, 255, 0.3), /* Inner highlight for more depth */
+                inset 0 -3px 4px rgba(0, 0, 0, 0.2); /* Inner shadow for sunk-in effect */
+    color: #ffffff; /* Updated text color */
+    width: fit-content; /* Allows the background to fit the text size */
+    margin-left: auto; /* Together with margin-right: auto, centers the title */
+    margin-right: auto;
+    max-width: 80%;
+}
+
+.shoes-title:hover {
+    transform: translateY(-10px);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.shoes-page.active {
+    transform: translateX(0); /* Slide in to view */
+}
+
+.shoes-page .text, .shoes-page h2 {
+    padding: 0 20px; /* Add padding to the sides */
+    font-size: calc(0.5vw + 0.5rem); /* Combine viewport width and a minimum size */
+    word-wrap: break-word; /* Ensure long words don't overflow */
+}
+
+.shoes-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Columns */
+    gap: 10px;
+    padding: 20px;
+    max-height: calc(100% - 40px); /* Subtracting vertical padding */
+    overflow-y: auto; /* Allows scrolling if more items are added */
+}
+
+.shoes-item, .shoes-placeholder {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    justify-self: center;
+}
+
+.shoes-item {
+    position: relative;
+    width: 100%;
+    height: 100px; /* Fixed height to maintain uniformity */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease;
+    overflow: visible;
+    z-index: 1;
+}
+
+.shoes-item:hover {
+    z-index: 3;
+}
+
+.shoes-item img {
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.shoes-info-card {
+    position: absolute;
+    bottom: -100px;  /* Adjust so it's just below the item */
+    left: 0;
+    width: 100%; /* Matches the width of the shoes item */
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 2; /* Ensure this is higher than the item's z-index */
+}
+
+.shoes-item:hover .shoes-info-card {
+    opacity: 1;
+    visibility: visible;
+    bottom: -140; /* Position it directly at the bottom of the item */
+}
+
+.shoes-item-info {
+    margin: 10px 0;
+    font-size: 14px; /* Adjust size as needed */
+}
+
+.shoes-item-info strong {
+    margin-right: 5px; /* Space between label and editable text */
+}
+
+.shoes-item-name, .shoes-item-brand {
+    display: inline-block; /* Makes span behave more like an input */
+    min-width: 50px; /* Ensures the editable area is sufficiently wide */
+    background: rgba(255, 255, 255, 0.5); /* Light background for editable areas */
+    border-bottom: 1px dashed #ccc; /* Underline style to indicate editability */
+}
+
+.shoes-edit-btn {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.shoes-edit-btn:hover {
+    background-color: #45a049;
+}
+
+.shoes-placeholder {
+    background-color: #f0f0f0;
+    border-radius: 50%;
+}
+
+/* Combine hover effects for both hoodie items and placeholders */
+.shoes-item:hover, .shoes-placeholder:hover {
+    transform: translateY(-10px); /* Hover effect */
+    cursor: pointer; /* Change cursor to indicate clickable */
+    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.shoes-page .shoes-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Adjust size as needed */
+    height: 100%; /* Adjust size as needed */
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.shoes-page .shoes-item:hover {
+    transform: translateY(-10px); /* Hover effect */
+}
+
+/* Saved Fits SidePage */
+.saved-fits-page {
+    padding-top: 8px;
+    position: fixed;
+    top: 80px;
+    bottom: 80px;
+    right: 0;
+    width: 22.5%;
+    background-color: #ffffff;
+    transform: translateX(100%);
+    transition: transform 0.5s ease;
+    z-index: 10;
+    overflow-y: auto;
+    border-radius: 20px 0 0 20px;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eaeaea;
+    color: #333;
+    font-family: monospace;
+}
+
+.saved-fits-title {
+    /* Similar styles to your other titles, like .hoodies-title */
+    all: unset; /* Removes default button styling */
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem; /* Example size, adjust based on your actual setup */
+    letter-spacing: 0.36em; /* Adjust to match the bottom nav text spacing */
+    font-weight: bold;
+    margin: 20px auto; /* Center the title */
+    padding: 10px 20px; /* Adjust padding as needed */
+    display: block; /* Change to block for full-width and auto centering */
+    background-color: #ff4181; /* Updated background color */
+    border-radius: 50px; /* Pill shape */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), /* Outer shadow for 3D effect */
+                0 6px 20px rgba(0, 0, 0, 0.19), /* Additional depth */
+                inset 0 1px 4px rgba(255, 255, 255, 0.3), /* Inner highlight for more depth */
+                inset 0 -3px 4px rgba(0, 0, 0, 0.2); /* Inner shadow for sunk-in effect */
+    color: #ffffff; /* Updated text color */
+    width: fit-content; /* Allows the background to fit the text size */
+    margin-left: auto; /* Together with margin-right: auto, centers the title */
+    margin-right: auto;
+    max-width: 80%;
+}
+
+.saved-fits-title:hover {
+    transform: translateY(-10px);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.saved-fits-page.active {
+    transform: translateX(0); /* Slide in to view when active */
+}
+
+.saved-fits-items {
+    /* Styles for displaying the items, similar to .hoodies-items */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Columns */
+    grid-template-rows: repeat(5, 1fr); /* 5 rows */
+    gap: 10px;
+    padding: 20px;
+    max-height: calc(100% - 40px); /* Subtracting vertical padding */
+    overflow-y: auto; /* Allows scrolling if more items are added */
+}
+
+.fit-item {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px; /* Space between items */
+    padding: 10px;
+    border: 1px solid #ccc; /* Optional: Adds a border around each fit */
+    border-radius: 10px; /* Optional: Rounds the corners of the border */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Adds shadow for depth */
+}
+
+.fit-item img {
+    max-width: 100px; /* Adjust width as necessary */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Optional: Rounds the corners of the images */
+}
+
+.fit-delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    color: white;
+    border-radius: 50%; /* Circular button */
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 12px;
+    z-index: 2; /* Ensure it's above other elements */
+}
+
+.fit-delete:hover {
+    background-color: darkred;
+}
+
+.fit-image {
+    width: 100%; /* Full width of the container */
+    height: auto; /* Maintain aspect ratio */
+    padding: 5px; /* Spacing around the image */
+}
+
+/* Playlist Stuff */
+
+.playlists-container {
+    /* Styling for the container of all playlists */
+    margin-top: 20px; /* Space from the create button or other elements */
+}
+
+.delete-playlist-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff4141; /* Red background for visibility */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-playlist-btn:hover {
+     background-color: #e63946; /* Darker red on hover */
+}
+
+.add-to-playlist-btn {
+    position: absolute;
+    top: 1px;
+    left: 5px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 22px;
+    height: 22px;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+}
+
+/* Playlist styling */
+.playlist-display {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Adds shadow for depth */
+}
+
+.outfit-display {
+    width: 100%;
+    min-height: 200px; /* Adjust based on design */
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Adds shadow for depth */
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+
+.playlist-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.control-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+}
+
+.control-btn:hover {
+    background-color: #555;
+}
+
+.saved-fits-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Columns */
+    gap: 10px;
+    max-height: calc(100% - 300px); /* Subtract playlist display height */
+    overflow-y: auto;
+}
+
+#playlistOutfitContainer img {
+    display: block; /* Stacks images vertically */
+    margin: 0 auto; /* Centers images horizontally */
+    max-width: 100%; /* Ensures images don't exceed their container */
+    height: auto; /* Maintains aspect ratio */
+    padding-bottom: 1px; /* Space between images */
+}
+
+.outfit-display {
+    position: relative;
+    width: 100%;
+    min-height: 200px; /* Adjust based on design */
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adds shadow for depth */
+}
+
+.delete-playlist-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff4141; /* Red background for visibility */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10; /* Ensure it's above other elements */
+}
+
+.delete-playlist-btn:hover {
+     background-color: #e63946; /* Darker red on hover */
+}
+
+/* ----------- */
+
+/* Save Outfits CSS */
+
+.save-outfit-container {
+    position: fixed;
+    top: 3%; /* Adjust the value to place it above the bottom navigation */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20; /* Above all other items */
+}
+
+#saveOutfitButton {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #ff4181;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#saveOutfitButton:hover {
+    background-color: #e63946;
+    transform: translateY(-10px); /* Hover effect */
+    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+  
+  /* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%; /* Could be more or less, depending on screen size */
+    height: 25%;
+}
+  
+  /* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
