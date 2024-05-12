@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles2.css">
+    <title>Item Details</title>
+</head>
+<body>
+    <h1 id="itemName"></h1>
+    <h2 id="itemBrand"></h2>
+    <img id="itemImage" src="" alt="Item Image">
+
+    <div id="outfit">
+        <h3>Generated Outfit:</h3>
+        <img id="headwearImage" src="" alt="Headwear Image">
+        <img id="hoodieImage" src="" alt="Hoodie Image">
+        <img id="pantsImage" src="" alt="Pants Image">
+        <img id="shoesImage" src="" alt="Shoes Image">
+    </div>
+
+    <script>
+        document.getElementById('itemName').textContent = new URLSearchParams(window.location.search).get('name');
+        document.getElementById('itemBrand').textContent = new URLSearchParams(window.location.search).get('brand');
+        document.getElementById('itemImage').src = new URLSearchParams(window.location.search).get('src');
+
+        // Assuming you pass the category as well, you can handle it here.
+        const mainItem = {
+            src: new URLSearchParams(window.location.search).get('src'),
+            name: new URLSearchParams(window.location.search).get('name'),
+            brand: new URLSearchParams(window.location.search).get('brand'),
+            category: new URLSearchParams(window.location.search).get('category')
+        };
+
+        const categories = {
+            'headwear': [{ src: 'defaults/headwear/headwear1.png', name: 'Black Beanie', brand: 'Uniqlo' }, /* more items */],
+            'hoodies': [{ src: 'defaults/hoodies/hoodie1.png', name: 'Blue Hoodie', brand: 'Uniqlo' }, /* more items */],
+            'pants': [{ src: 'defaults/pants/pants1.png', name: 'Blue', brand: 'Jeans' }, /* more items */],
+            'shoes': [{ src: 'defaults/shoes/shoes1.png', name: 'Sambas', brand: 'Adidas' }, /* more items */]
+        };
+
+        function selectRandomItem(items) {
+            return items[Math.floor(Math.random() * items.length)];
+        }
+
+        function generateOutfit(mainItem) {
+            let outfit = {};
+            Object.keys(categories).forEach(category => {
+                if (category === mainItem.category) {
+                    outfit[category] = mainItem;
+                } else {
+                    outfit[category] = selectRandomItem(categories[category]);
+                }
+            });
+
+            displayOutfit(outfit);
+        }
+
+        function displayOutfit(outfit) {
+            document.getElementById('headwearImage').src = outfit.headwear.src;
+            document.getElementById('hoodieImage').src = outfit.hoodies.src;
+            document.getElementById('pantsImage').src = outfit.pants.src;
+            document.getElementById('shoesImage').src = outfit.shoes.src;
+        }
+
+        generateOutfit(mainItem);
+    </script>
+</body>
+</html>

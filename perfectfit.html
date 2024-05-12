@@ -1,928 +1,1116 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
 <!DOCTYPE html>
 <html lang="en">
 
+
 <html>
-    <head>
-        <meta charset = "utf-8">
-        <meta name = "viewport" content = "width = device-width, initial-scale = 1">
-        <link rel="stylesheet" href="styles.css">
-        <title>PerfectFit</title>
-    </head>
+   <head>
+       <meta charset = "utf-8">
+       <meta name = "viewport" content = "width = device-width, initial-scale = 1">
+       <link rel="stylesheet" href="styles.css">
+       <title>PerfectFit</title>
+   </head>
 <body>
+
 
 <!--Sets default sources for images-->
 
+
 <div class="container">
-    <p class="text">PerfectFit</p>
+   <p class="text">PerfectFit</p>
 </div>
+
 
 <div class="headwear">
-    <img src="defaults/headwear/headwear1.png" id="headwear" height="80"/>
+   <img src="defaults/headwear/headwear1.png" id="headwear" height="80"/>
 </div>
+
 
 <div class="hoodie">
-    <img src="defaults/hoodies/hoodie1.png" id="hoodies" height="250"/>
+   <img src="defaults/tops/top1.png" id="tops" height="250"/>
 </div>
+
 
 <div class="pant">
-    <img src="defaults/pants/pants1.png" id="pants" height="350">
+   <img src="defaults/bottoms/bottoms1.png" id="bottoms" height="350">
 </div>
 
+
 <div class="shoes">
-    <img src="defaults/shoes/shoes1.png" id="shoes" height="90">
+   <img src="defaults/shoes/shoes1.png" id="shoes" height="90">
 </div>
+
 
 <!--HEADWEAR BUTTONS-->
 
+
 <div class="headwearNextButton">
-    <button onclick="nextButtonClick('headwear')" style="font-size: 25px; background-color: white;">></button>
+   <button onclick="nextButtonClick('headwear')" style="font-size: 25px; background-color: white;">></button>
 </div>
 
+
 <div class="headwearPrevButton">
-    <button onclick="prevButtonClick('headwear')" style="font-size: 25px; background-color: white;"><</button>
+   <button onclick="prevButtonClick('headwear')" style="font-size: 25px; background-color: white;"><</button>
 </div>
+
 
 <!--HOODIE BUTTONS-->
 
+
 <div class="hoodieNextButton">
-    <button onclick="nextButtonClick('hoodies')" style="font-size: 25px; background-color: white;">></button>
+   <button onclick="nextButtonClick('tops')" style="font-size: 25px; background-color: white;">></button>
 </div>
+
+
 
 
 <div class="hoodiePrevButton">
-    <button onclick="prevButtonClick('hoodies')" style="font-size: 25px; background-color: white;"><</button>
+   <button onclick="prevButtonClick('tops')" style="font-size: 25px; background-color: white;"><</button>
 </div>
 
 
-<!--PANTS BUTTONS-->
 
-<div class="pantsNextButton">
-    <button onclick="nextButtonClick('pants')" style="font-size: 25px; background-color: white;">></button>
+
+<!--bottoms BUTTONS-->
+
+
+<div class="bottomsNextButton">
+   <button onclick="nextButtonClick('bottoms')" style="font-size: 25px; background-color: white;">></button>
 </div>
 
-<div class="pantsPrevButton">
-    <button onclick="prevButtonClick('pants')" style="font-size: 25px; background-color: white;"><</button>
+
+<div class="bottomsPrevButton">
+   <button onclick="prevButtonClick('bottoms')" style="font-size: 25px; background-color: white;"><</button>
 </div>
+
 
 <!--SHOES BUTTONS-->
 
+
 <div class="shoesNextButton">
-    <button onclick="nextButtonClick('shoes')" style="font-size: 25px; background-color: white;">></button>
+   <button onclick="nextButtonClick('shoes')" style="font-size: 25px; background-color: white;">></button>
 </div>
 
+
 <div class="shoesPrevButton">
-    <button onclick="prevButtonClick('shoes')" style="font-size: 25px; background-color: white;"><</button>
+   <button onclick="prevButtonClick('shoes')" style="font-size: 25px; background-color: white;"><</button>
 </div>
+
+
 
 
 <div class="container">
-    <p class="text">PerfectFit</p>
+   <p class="text">PerfectFit</p>
 </div>
 
- <!--Javascript functions to change the source of picture of the garment-->
+
+<!--Javascript functions to change the source of picture of the garment-->
 <script type="text/javascript">
 
-    let headwear_index = 0;
-    let hoodie_index = 0;
-    let pants_index = 0;
-    let shoes_index = 0;
 
-    const headwear = ['defaults/headwear/headwear1.png', 'defaults/headwear/headwear2.png', 'defaults/headwear/headwear3.png','defaults/headwear/headwear4.png'];
-    const hoodies = ['defaults/hoodies/hoodie1.png', 'defaults/hoodies/hoodie2.png', 'defaults/hoodies/hoodie3.png', 'defaults/hoodies/hoodie4.png'];
-    const pants = ['defaults/pants/pants1.png', 'defaults/pants/pants2.png', 'defaults/pants/pants3.png'];
-    const shoes = ['defaults/shoes/shoes1.png', 'defaults/shoes/shoes2.png', 'defaults/shoes/shoes3.png'];
+   let headwear_index = 0;
+   let hoodie_index = 0;
+   let bottoms_index = 0;
+   let shoes_index = 0;
 
-    //Function to move to next item in list
-    function nextButtonClick(id) {
-        if (id == 'headwear') {
-        headwear_index = (headwear_index + 1) % headwear.length; // Loop back to start
-        document.getElementById(id).src = headwear[headwear_index];
-        }
 
-        if (id == 'hoodies') {
-        hoodie_index = (hoodie_index + 1) % hoodies.length; // Loop back to start
-        document.getElementById(id).src = hoodies[hoodie_index];
-        }
+   const headwear = ['defaults/headwear/headwear1.png', 'defaults/headwear/headwear2.png', 'defaults/headwear/headwear3.png','defaults/headwear/headwear4.png'];
+   const tops = ['defaults/tops/top1.png', 'defaults/tops/top2.png', 'defaults/tops/top3.png', 'defaults/tops/top4.png','defaults/tops/top6.png' ];
+   const bottoms = ['defaults/bottoms/bottoms1.png', 'defaults/bottoms/bottoms2.png', 'defaults/bottoms/bottoms3.png','defaults/bottoms/bottoms4.png', 'defaults/bottoms/bottoms5.png', 'defaults/bottoms/bottoms6.png'];
+   const shoes = ['defaults/shoes/shoes1.png', 'defaults/shoes/shoes2.png', 'defaults/shoes/shoes3.png'];
 
-        if (id == 'pants') {
-        pants_index = (pants_index + 1) % pants.length; // Loop back to start
-        document.getElementById(id).src = pants[pants_index];
-        }
 
-        if (id == 'shoes') {
-        shoes_index = (shoes_index + 1) % shoes.length; // Loop back to start
-        document.getElementById(id).src = shoes[shoes_index];
-        }
-    }
+   //Function to move to next item in list
+   function nextButtonClick(id) {
+       if (id == 'headwear') {
+       headwear_index = (headwear_index + 1) % headwear.length; // Loop back to start
+       document.getElementById(id).src = headwear[headwear_index];
+       }
 
-    //Function to move to previous item in list
-    function prevButtonClick(id) {
-        if (id == 'headwear') {
-        headwear_index = (headwear_index - 1 + headwear.length) % headwear.length; // Loop back to end
-        document.getElementById(id).src = headwear[headwear_index];
-        }
 
-        if (id == 'hoodies') {
-        hoodie_index = (hoodie_index - 1 + hoodies.length) % hoodies.length; // Loop back to end
-        document.getElementById(id).src = hoodies[hoodie_index];
-        }
+       if (id == 'tops') {
+       hoodie_index = (hoodie_index + 1) % tops.length; // Loop back to start
+       document.getElementById(id).src = tops[hoodie_index];
+       }
 
-        if (id == 'pants') {
-        pants_index = (pants_index - 1 + pants.length) % pants.length; // Loop back to end
-        document.getElementById(id).src = pants[pants_index];
-        }
 
-        if (id == 'shoes') {
-        shoes_index = (shoes_index - 1 + shoes.length) % shoes.length; // Loop back to end
-        document.getElementById(id).src = shoes[shoes_index];
-        }
-    }
- </script>
+       if (id == 'bottoms') {
+       bottoms_index = (bottoms_index + 1) % bottoms.length; // Loop back to start
+       document.getElementById(id).src = bottoms[bottoms_index];
+       }
+
+
+       if (id == 'shoes') {
+       shoes_index = (shoes_index + 1) % shoes.length; // Loop back to start
+       document.getElementById(id).src = shoes[shoes_index];
+       }
+   }
+
+
+   //Function to move to previous item in list
+   function prevButtonClick(id) {
+       if (id == 'headwear') {
+       headwear_index = (headwear_index - 1 + headwear.length) % headwear.length; // Loop back to end
+       document.getElementById(id).src = headwear[headwear_index];
+       }
+
+
+       if (id == 'tops') {
+       hoodie_index = (hoodie_index - 1 + tops.length) % tops.length; // Loop back to end
+       document.getElementById(id).src = tops[hoodie_index];
+       }
+
+
+       if (id == 'bottoms') {
+       bottoms_index = (bottoms_index - 1 + bottoms.length) % bottoms.length; // Loop back to end
+       document.getElementById(id).src = bottoms[bottoms_index];
+       }
+
+
+       if (id == 'shoes') {
+       shoes_index = (shoes_index - 1 + shoes.length) % shoes.length; // Loop back to end
+       document.getElementById(id).src = shoes[shoes_index];
+       }
+   }
+</script>
+
 
 <div id="display"></div>
 
+
 <div id="myModal" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <form>
-            <input id="pinterestUsername" placeholder="Username" type="text">
-            <input id="pinterestPassword" placeholder="Password" type="text">
-        </form>
-        <button onclick="openWindow('pinterest')">Sign In</button>
-        <p>Sign In</p>
-    </div>
+   <!-- Modal content -->
+   <div class="modal-content">
+       <span class="close">&times;</span>
+       <form>
+           <input id="pinterestUsername" placeholder="Username" type="text">
+           <input id="pinterestPassword" placeholder="Password" type="text">
+       </form>
+       <button onclick="openWindow('pinterest')">Sign In</button>
+       <div id="buttonContainer"></div>
+   </div>
 </div>
+
 
 <title> Animated Navigation Menu</title>
 
-    <!--TOP RIGHT NAVIGATION BAR-->
-    <div class="navigation">
 
-        <li><a href="#"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+   <!--TOP RIGHT NAVIGATION BAR-->
+   <div class="navigation">
 
-        <div class="dropdown">
-            <li>
-                <a href="#">
-                    <label>
-                        <label class="fa fa-plus" aria-hidden="true"></label>
-                    </label>
-                </a>
-            </li>
 
-            <div class="dropdown-menu">
+       <li><a href="#"><i class="fa fa-home" aria-hidden="true"></i></a></li>
 
-                <form onchange="submitForm(event, 'headwear')" style="display:none" id="headwearImageForm" enctype="multipart/form-data">
-                    <input type="file" id="headwearImageUpload" style="display:none" accept="image/png, image/jpg" multiple>
-                </form>
 
-                <form onchange="submitForm(event, 'tops')" style="display:none" id="topsImageForm" enctype="multipart/form-data">
-                    <input type="file" id="topsImageUpload" style="display:none" accept="image/png, image/jpg" multiple>
-                </form>
+       <div class="dropdown">
+           <li>
+               <a href="#">
+                   <label>
+                       <label class="fa fa-plus" aria-hidden="true"></label>
+                   </label>
+               </a>
+           </li>
 
-                <form onchange="submitForm(event, 'bottoms')" style="display:none" id="bottomsImageForm" enctype="multipart/form-data"></form>
-                    <input type="file" id="bottomsImageUpload" style="display:none" accept="image/png, image/jpg" multiple>
-                </form>
 
-                <label for="headwearImageUpload">Headwear</label>
-                <label for="topsImageUpload">Tops</label>
-                <label for="bottomsImageUpload">Bottoms</label>
-                <button id="pinterest-login">Pinterest</button>
+           <div class="dropdown-menu">
 
-                <script src="bgrem.js"></script>
-                <script src="webscrape.js"></script>
 
-                <!--Moves X Button when dropdown occurs-->
-                <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        const plusIcon = document.querySelector('.dropdown'); // Assuming this is where your "+" icon is
-                        const closeButton = document.querySelector('.toggleMenu'); // Assuming this is your "X" button
-                            // Hover over "+" icon
-                            plusIcon.addEventListener('mouseenter', function() {
-                            closeButton.classList.add('moveRight');
-                        });
+               <form onchange="submitForm(event, 'headwear')" style="display:none" id="headwearImageForm" enctype="multipart/form-data">
+                   <input type="file" id="headwearImageUpload" style="display:none" accept="image/png, image/jpg" multiple>
+               </form>
 
-                        // Leaving "+" icon
-                        plusIcon.addEventListener('mouseleave', function() {
-                            closeButton.classList.remove('moveRight');
-                        });
-                    });
-                </script>
-            </div>
-        </div>
 
-        <li><a href="#"><i class="fa fa-search-plus" aria-hidden="true"></i></a></li>
-        <li><a href="#"><i class="fa fa-user-circle" aria-hidden="true"></i></a></li>
-        <span class="toggleMenu"></span>
-    </div>
+               <form onchange="submitForm(event, 'tops')" style="display:none" id="topsImageForm" enctype="multipart/form-data">
+                   <input type="file" id="topsImageUpload" style="display:none" accept="image/png, image/jpg" multiple>
+               </form>
 
-    <script>
-        let toggleMenu = document.querySelector('.toggleMenu');
-        let navigation = document.querySelector('.navigation');
-        toggleMenu.onclick = function(){
-            navigation.classList.toggle('active');
-        }
-    </script>
-  
-<div class="bottom-navigation">
-    <ul>
-        <li class="list">
-            <a href="#" id="headwearIcon">
-                <span class="bottom-icon"></span>
-                <img src ="icons/hats-icon.png" height ="25">
-                <span class="text">Headwear</span>
-            </a>
-        </li>
 
-        <li class="list">
-            <a href="#" id="hoodiesIcon">
-                <span class="bottom-icon">
-                    <img src ="icons/hoodie-icon.png" height ="25">
-                </span>
-                <span class="text">Hoodies</span>
-            </a>
-        </li>
+               <form onchange="submitForm(event, 'bottoms')" style="display:none" id="bottomsImageForm" enctype="multipart/form-data"></form>
+                   <input type="file" id="bottomsImageUpload" style="display:none" accept="image/png, image/jpg" multiple>
+               </form>
 
-        <li class="list">
-            <a href="#" id="savedFitsIcon">
-                <span class="bottom-icon"></span>
-                    <img src ="icons/wardrobe-icon.png" height ="25">
-                <span class="text">Saved Fits</span>
-            </a>
-        </li>
 
-        <li class="list">
-            <a href="#" id="pantsIcon">
-                <span class="icons/bottom-icon">
-                    <img src ="icons/pants-icon.png" height ="25">
-                </span>
-                <span class="text">Pants</span>
-            </a>
-        </li>
+               <label for="headwearImageUpload">Headwear</label>
+               <label for="topsImageUpload">Tops</label>
+               <label for="bottomsImageUpload">Bottoms</label>
+               <button id="pinterest-login">Pinterest</button>
 
-        <li class="list">
-            <a href="#" id="shoesIcon">
-                <span class="icons/bottom-icon">
-                    <img src ="icons/shoes-icon.png" height ="25">
-                </span>
-                <span class="text">Shoes</span>
-            </a>
-        </li>
 
-    </ul>
+               <script src="bgrem.js"></script>
+               <script src="webscrape.js"></script>
+
+
+               <!--Moves X Button when dropdown occurs-->
+               <script>
+                   document.addEventListener('DOMContentLoaded', function() {
+                       const plusIcon = document.querySelector('.dropdown'); // Assuming this is where your "+" icon is
+                       const closeButton = document.querySelector('.toggleMenu'); // Assuming this is your "X" button
+                           // Hover over "+" icon
+                           plusIcon.addEventListener('mouseenter', function() {
+                           closeButton.classList.add('moveRight');
+                       });
+
+
+                       // Leaving "+" icon
+                       plusIcon.addEventListener('mouseleave', function() {
+                           closeButton.classList.remove('moveRight');
+                       });
+                   });
+               </script>
+           </div>
+       </div>
+
+
+       <li><a href="#"><i class="fa fa-search-plus" aria-hidden="true"></i></a></li>
+       <li><a href="#"><i class="fa fa-user-circle" aria-hidden="true"></i></a></li>
+       <span class="toggleMenu"></span>
+   </div>
+
+
+   <script>
+       let toggleMenu = document.querySelector('.toggleMenu');
+       let navigation = document.querySelector('.navigation');
+       toggleMenu.onclick = function(){
+           navigation.classList.toggle('active');
+       }
+   </script>
+ <div class="bottom-navigation">
+   <ul>
+       <li class="list">
+           <a href="#" id="headwearIcon">
+               <span class="bottom-icon"></span>
+               <img src ="icons/hats-icon.png" height ="25">
+               <span class="text">Headwear</span>
+           </a>
+       </li>
+
+
+       <li class="list">
+           <a href="#" id="topsIcon">
+               <span class="bottom-icon">
+                   <img src ="icons/hoodie-icon.png" height ="25">
+               </span>
+               <span class="text">Tops</span>
+           </a>
+       </li>
+
+
+       <li class="list">
+           <a href="#" id="savedFitsIcon">
+               <span class="bottom-icon"></span>
+                   <img src ="icons/wardrobe-icon.png" height ="25">
+               <span class="text">Saved Fits</span>
+           </a>
+       </li>
+
+
+       <li class="list">
+           <a href="#" id="bottomsIcon">
+               <span class="icons/bottom-icon">
+                   <img src ="icons/pants-icon.png" height ="25">
+               </span>
+               <span class="text">Bottoms</span>
+           </a>
+       </li>
+
+
+       <li class="list">
+           <a href="#" id="shoesIcon">
+               <span class="icons/bottom-icon">
+                   <img src ="icons/shoes-icon.png" height ="25">
+               </span>
+               <span class="text">Shoes</span>
+           </a>
+       </li>
+
+
+   </ul>
 </div>
+
 
 <!-- Save Outfit Button -->
 <div class="save-outfit-container">
-    <button id="saveOutfitButton">Save Current Outfit</button>
+   <button id="saveOutfitButton">Save Current Outfit</button>
 </div>
+
+
 
 
 <!-- Headwear Page Section, initially hidden -->
 <div id="headwearPage" class="headwear-page">
-    <!-- Your headwear content here -->
-    <button id="closeHeadwearPage" class="headwear-title">Headwear</button>
-    <div id="headwearItems" class="headwear-items"></div>
+   <!-- Your headwear content here -->
+   <button id="closeHeadwearPage" class="headwear-title">headwear</button>
+   <div id="headwearItems" class="headwear-items"></div>
 </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-    const headwearIcon = document.getElementById('headwearIcon');
-    const headwearPage = document.getElementById('headwearPage');
-    const headwearItemsContainer = document.getElementById('headwearItems');
-    const headwearDisplay = document.getElementById('headwear'); // Main display area for headwear
-    const closeHeadwearPageBtn = document.getElementById('closeHeadwearPage'); // Close button
-    
-    
-    const headwear = [
-        { src: 'defaults/headwear/headwear1.png', name: 'Black Beanie', brand: 'Uniqlo' },
-        { src: 'defaults/headwear/headwear2.png', name: 'Arc Beanie', brand: 'Arcteryx' },
-        { src: 'defaults/headwear/headwear3.png', name: 'NY Hat', brand: 'Lids' },
-        { src: 'defaults/headwear/headwear4.png', name: 'Black Arc', brand: 'Arcteryx' }
-    ];
-    
-    
-    function populateHeadwearItems() {
-        headwear.forEach(item => {
-            const itemContainer = document.createElement('div');
-            itemContainer.classList.add('headwear-item');
-            const img = document.createElement('img');
-            img.src = item.src;
-            img.alt = item.name;
-    
-            // Info card with editable fields
-            const infoCard = document.createElement('div');
-            infoCard.className = 'headwear-info-card';
-            infoCard.innerHTML = `
-                <p class="headwear-item-info"><strong>Name:</strong> <span class="headwear-item-name" contentEditable="false">${item.name}</span></p>
-                <p class="headwear-item-info"><strong>Brand:</strong> <span class="headwear-item-brand" contentEditable="false">${item.brand}</span></p>
-                <button class="headwear-edit-btn">Edit</button>
-            `;
-    
-            // Click event to update the central display when a headwear image is clicked
-            img.onclick = () => {
-                headwearDisplay.src = img.src;
-            };
-    
-            itemContainer.appendChild(img);
-            itemContainer.appendChild(infoCard);
-            headwearItemsContainer.appendChild(itemContainer);
-    
-            // Event for edit/save button
-            infoCard.querySelector('.headwear-edit-btn').addEventListener('click', function() {
-                const name = infoCard.querySelector('.headwear-item-name');
-                const brand = infoCard.querySelector('.headwear-item-brand');
-                if (this.innerText === 'Edit') {
-                    name.contentEditable = "true";
-                    brand.contentEditable = "true";
-                    this.innerText = 'Save';
-                    name.focus();
-                } else {
-                    name.contentEditable = "false";
-                    brand.contentEditable = "false";
-                    this.innerText = 'Edit';
-                }
-            });
-        });
-    
-        // Fill remaining grid slots with placeholders if necessary
-        const itemsCount = headwear.length;
-        const totalSlots = 15; // Assuming a 5x3 grid
-        const remainingSlots = totalSlots - itemsCount;
-        for (let i = 0; i < remainingSlots; i++) {
-            const placeholder = document.createElement('div');
-            placeholder.classList.add('headwear-placeholder');
-            headwearItemsContainer.appendChild(placeholder);
-        }
-    }
-    
-    headwearIcon.addEventListener('click', function(e) {
-        e.preventDefault();
-        headwearPage.classList.toggle('active');
-        if (!headwearItemsContainer.hasChildNodes()) {
-            populateHeadwearItems();
-        }
-    });
-    
-    closeHeadwearPageBtn.addEventListener('click', function() {
-        headwearPage.classList.remove('active');
-    });
-    });
-</script>
-
-<!-- Hoodies Page Section, initially hidden -->
-<div id="hoodiesPage" class="hoodies-page">
-    <!-- Your hoodies content here -->
-    <button id="closeHoodiesPage" class="hoodies-title">Hoodies</button>
-    <div id="hoodiesItems" class="hoodies-items"></div>
-</div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    const hoodiesIcon = document.getElementById('hoodiesIcon');
-    const hoodiesPage = document.getElementById('hoodiesPage');
-    const hoodiesItemsContainer = document.getElementById('hoodiesItems');
-    const hoodiesDisplay = document.getElementById('hoodies'); // Main display area for hoodies
-    const closeHoodiesPageBtn = document.getElementById('closeHoodiesPage'); // Close button
+   document.addEventListener('DOMContentLoaded', function() {
+   const headwearIcon = document.getElementById('headwearIcon');
+   const headwearPage = document.getElementById('headwearPage');
+   const headwearItemsContainer = document.getElementById('headwearItems');
+   const headwearDisplay = document.getElementById('headwear'); // Main display area for headwear
+   const closeHeadwearPageBtn = document.getElementById('closeHeadwearPage'); // Close button
+  
+  
+   const headwear = [
+       { src: 'defaults/headwear/headwear1.png', name: 'Black Beanie', brand: 'Uniqlo' },
+       { src: 'defaults/headwear/headwear2.png', name: 'Arc Beanie', brand: 'Arcteryx' },
+       { src: 'defaults/headwear/headwear3.png', name: 'NY Hat', brand: 'Lids' },
+       { src: 'defaults/headwear/headwear4.png', name: 'Black Arc', brand: 'Arcteryx' }
+   ];
+  
+  
+   function populateHeadwearItems() {
+       headwear.forEach(item => {
+           const itemContainer = document.createElement('div');
+           itemContainer.classList.add('headwear-item');
+           const img = document.createElement('img');
+           img.src = item.src;
+           img.alt = item.name;
+  
+           // Info card with editable fields
+           const infoCard = document.createElement('div');
+           infoCard.className = 'headwear-info-card';
+           infoCard.innerHTML = `
+               <p class="headwear-item-info"><strong>Name:</strong> <span class="headwear-item-name" contentEditable="false">${item.name}</span></p>
+               <p class="headwear-item-info"><strong>Brand:</strong> <span class="headwear-item-brand" contentEditable="false">${item.brand}</span></p>
+               <button class="headwear-edit-btn">Edit</button>
+		<button onclick='openDetailsModal(${JSON.stringify(item)})'>Learn More</button>
 
-    const hoodies = [
-        { src: 'defaults/hoodies/hoodie1.png', name: 'Blue Hoodie', brand: 'Uniqlo' },
-        { src: 'defaults/hoodies/hoodie2.png', name: 'Green Hoodie', brand: 'Urban' },
-        { src: 'defaults/hoodies/hoodie3.png', name: 'Grey', brand: 'Pacsun' },
-        { src: 'defaults/hoodies/hoodie4.png', name: 'Sloodie', brand: 'Iongaf' }
-    ];
 
-    function populateHoodieItems() {
-        hoodies.forEach(item => {
-            const itemContainer = document.createElement('div');
-            itemContainer.classList.add('hoodies-item');
-            const img = document.createElement('img');
-            img.src = item.src;
-            img.alt = item.name;
-
-            // Info card with editable fields
-            const infoCard = document.createElement('div');
-            infoCard.className = 'hoodies-info-card';
-            infoCard.innerHTML = `
-                <p class="hoodies-item-info"><strong>Name:</strong> <span class="hoodies-item-name" contentEditable="false">${item.name}</span></p>
-                <p class="hoodies-item-info"><strong>Brand:</strong> <span class="hoodies-item-brand" contentEditable="false">${item.brand}</span></p>
-                <button class="hoodies-edit-btn">Edit</button>
-            `;
-
-            // Click event to update the central display when a headwear image is clicked
-            img.onclick = () => {
-                hoodiesDisplay.src = img.src;
-            };
-
-            itemContainer.appendChild(img);
-            itemContainer.appendChild(infoCard);
-            hoodiesItemsContainer.appendChild(itemContainer);
-
-            // Event for edit/save button
-            infoCard.querySelector('.hoodies-edit-btn').addEventListener('click', function() {
-                const name = infoCard.querySelector('.hoodies-item-name');
-                const brand = infoCard.querySelector('.hoodies-item-brand');
-                if (this.innerText === 'Edit') {
-                    name.contentEditable = "true";
-                    brand.contentEditable = "true";
-                    this.innerText = 'Save';
-                    name.focus();
-                } else {
-                    name.contentEditable = "false";
-                    brand.contentEditable = "false";
-                    this.innerText = 'Edit';
-                }
-            });
-        });
-
-        // Fill remaining grid slots with placeholders if necessary
-        const itemsCount = hoodies.length;
-        const totalSlots = 15; // Assuming a 5x3 grid
-        const remainingSlots = totalSlots - itemsCount;
-        for (let i = 0; i < remainingSlots; i++) {
-            const placeholder = document.createElement('div');
-            placeholder.classList.add('headwear-placeholder');
-            hoodiesItemsContainer.appendChild(placeholder);
-        }
-    }
-
-    hoodiesIcon.addEventListener('click', function(e) {
-        e.preventDefault();
-        hoodiesPage.classList.toggle('active');
-        if (!hoodiesItemsContainer.hasChildNodes()) {
-            populateHoodieItems();
-        }
-    });
-
-    closeHoodiesPageBtn.addEventListener('click', function() {
-        hoodiesPage.classList.remove('active');
-    });
-    });
+           `;
+  
+           // Click event to update the central display when a headwear image is clicked
+           img.onclick = () => {
+               headwearDisplay.src = img.src;
+           };
+  
+           itemContainer.appendChild(img);
+           itemContainer.appendChild(infoCard);
+           headwearItemsContainer.appendChild(itemContainer);
+  
+           // Event for edit/save button
+           infoCard.querySelector('.headwear-edit-btn').addEventListener('click', function() {
+               const name = infoCard.querySelector('.headwear-item-name');
+               const brand = infoCard.querySelector('.headwear-item-brand');
+               if (this.innerText === 'Edit') {
+                   name.contentEditable = "true";
+                   brand.contentEditable = "true";
+                   this.innerText = 'Save';
+                   name.focus();
+               } else {
+                   name.contentEditable = "false";
+                   brand.contentEditable = "false";
+                   this.innerText = 'Edit';
+               }
+           });
+       });
+  
+       // Fill remaining grid slots with placeholders if necessary
+       const itemsCount = headwear.length;
+       const totalSlots = 15; // Assuming a 5x3 grid
+       const remainingSlots = totalSlots - itemsCount;
+       for (let i = 0; i < remainingSlots; i++) {
+           const placeholder = document.createElement('div');
+           placeholder.classList.add('headwear-placeholder');
+           headwearItemsContainer.appendChild(placeholder);
+       }
+   }
+  
+   headwearIcon.addEventListener('click', function(e) {
+       e.preventDefault();
+       headwearPage.classList.toggle('active');
+       if (!headwearItemsContainer.hasChildNodes()) {
+           populateHeadwearItems();
+       }
+   });
+  
+   closeHeadwearPageBtn.addEventListener('click', function() {
+       headwearPage.classList.remove('active');
+   });
+   });
 </script>
 
 
-<!-- Pants Page Section, initially hidden -->
-<div id="pantsPage" class="pants-page">
-    <!-- Your Pants content here -->
-    <button id="closePantsPage" class="pants-title">Pants</button>
-    <div id="pantsItems" class="pants-items"></div>
+<!-- tops Page Section, initially hidden -->
+<div id="topsPage" class="tops-page">
+   <!-- Your tops content here -->
+   <button id="closetopsPage" class="tops-title">tops</button>
+   <div id="topsItems" class="tops-items"></div>
+</div>
+
+
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+   const topsIcon = document.getElementById('topsIcon');
+   const topsPage = document.getElementById('topsPage');
+   const topsItemsContainer = document.getElementById('topsItems');
+   const topsDisplay = document.getElementById('tops'); // Main display area for tops
+   const closetopsPageBtn = document.getElementById('closetopsPage'); // Close button
+
+
+   const tops = [
+       { src: 'defaults/tops/top1.png', name: 'Blue Hoodie', brand: 'Uniqlo' },
+       { src: 'defaults/tops/top2.png', name: 'Green Hoodie', brand: 'Urban' },
+       { src: 'defaults/tops/top3.png', name: 'Grey', brand: 'Pacsun' },
+       { src: 'defaults/tops/top4.png', name: 'Sloodie', brand: 'Iongaf' },
+       { src: 'defaults/tops/top6.png', name: 'Longsleeve', brand: 'Kapital' }
+   ];
+
+
+   function populateHoodieItems() {
+       tops.forEach(item => {
+           const itemContainer = document.createElement('div');
+           itemContainer.classList.add('tops-item');
+           const img = document.createElement('img');
+           img.src = item.src;
+           img.alt = item.name;
+
+
+           // Info card with editable fields
+           const infoCard = document.createElement('div');
+           infoCard.className = 'tops-info-card';
+           infoCard.innerHTML = `
+               <p class="tops-item-info"><strong>Name:</strong> <span class="tops-item-name" contentEditable="false">${item.name}</span></p>
+               <p class="tops-item-info"><strong>Brand:</strong> <span class="tops-item-brand" contentEditable="false">${item.brand}</span></p>
+               <button class="tops-edit-btn">Edit</button>
+		<button onclick='openDetailsModal(${JSON.stringify(item)})'>Learn More</button>
+
+
+           `;
+
+
+           // Click event to update the central display when a headwear image is clicked
+           img.onclick = () => {
+               topsDisplay.src = img.src;
+           };
+
+
+           itemContainer.appendChild(img);
+           itemContainer.appendChild(infoCard);
+           topsItemsContainer.appendChild(itemContainer);
+
+
+           // Event for edit/save button
+           infoCard.querySelector('.tops-edit-btn').addEventListener('click', function() {
+               const name = infoCard.querySelector('.tops-item-name');
+               const brand = infoCard.querySelector('.tops-item-brand');
+               if (this.innerText === 'Edit') {
+                   name.contentEditable = "true";
+                   brand.contentEditable = "true";
+                   this.innerText = 'Save';
+                   name.focus();
+               } else {
+                   name.contentEditable = "false";
+                   brand.contentEditable = "false";
+                   this.innerText = 'Edit';
+               }
+           });
+       });
+
+
+       // Fill remaining grid slots with placeholders if necessary
+       const itemsCount = tops.length;
+       const totalSlots = 15; // Assuming a 5x3 grid
+       const remainingSlots = totalSlots - itemsCount;
+       for (let i = 0; i < remainingSlots; i++) {
+           const placeholder = document.createElement('div');
+           placeholder.classList.add('headwear-placeholder');
+           topsItemsContainer.appendChild(placeholder);
+       }
+   }
+
+
+   topsIcon.addEventListener('click', function(e) {
+       e.preventDefault();
+       topsPage.classList.toggle('active');
+       if (!topsItemsContainer.hasChildNodes()) {
+           populateHoodieItems();
+       }
+   });
+
+
+   closetopsPageBtn.addEventListener('click', function() {
+       topsPage.classList.remove('active');
+   });
+   });
+</script>
+
+
+
+
+<!-- bottoms Page Section, initially hidden -->
+<div id="bottomsPage" class="bottoms-page">
+   <!-- Your bottoms content here -->
+   <button id="closebottomsPage" class="bottoms-title">bottoms</button>
+   <div id="bottomsItems" class="bottoms-items"></div>
 </div>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    const pantsIcon = document.getElementById('pantsIcon');
-    const pantsPage = document.getElementById('pantsPage');
-    const pantsItemsContainer = document.getElementById('pantsItems');
-    const pantsDisplay = document.getElementById('pants'); // Main display area for pants
-    const closePantsPageBtn = document.getElementById('closePantsPage'); // Close button
+   document.addEventListener('DOMContentLoaded', function() {
+   const bottomsIcon = document.getElementById('bottomsIcon');
+   const bottomsPage = document.getElementById('bottomsPage');
+   const bottomsItemsContainer = document.getElementById('bottomsItems');
+   const bottomsDisplay = document.getElementById('bottoms'); // Main display area for bottoms
+   const closebottomsPageBtn = document.getElementById('closebottomsPage'); // Close button
 
-    const pants = [
-        { src: 'defaults/pants/pants1.png', name: 'Blue', brand: 'Jeans' },
-        { src: 'defaults/pants/pants2.png', name: 'White', brand: 'Pants' },
-        { src: 'defaults/pants/pants3.png', name: 'Brown', brand: 'Sweats' },
-    ];
 
-    function populatePantsItems() {
-        pants.forEach(item => {
-            const itemContainer = document.createElement('div');
-            itemContainer.classList.add('pants-item');
-            const img = document.createElement('img');
-            img.src = item.src;
-            img.alt = item.name;
+   const bottoms = [
+       { src: 'defaults/bottoms/bottoms1.png', name: 'Blue', brand: 'Jeans' },
+       { src: 'defaults/bottoms/bottoms2.png', name: 'White', brand: 'bottoms' },
+       { src: 'defaults/bottoms/bottoms3.png', name: 'Brown', brand: 'Sweats' },
+       { src: 'defaults/bottoms/bottoms4.png', name: 'Baggy Pants', brand: 'Bershka' },
+       { src: 'defaults/bottoms/bottoms5.png', name: 'Grey', brand: 'Sweats' },
+       { src: 'defaults/bottoms/bottoms6.png', name: 'Baggy Pants', brand: 'Bershka' }
+   ];
 
-            // Info card with editable fields
-            const infoCard = document.createElement('div');
-            infoCard.className = 'pants-info-card';
-            infoCard.innerHTML = `
-                <p class="pants-item-info"><strong>Name:</strong> <span class="pants-item-name" contentEditable="false">${item.name}</span></p>
-                <p class="pants-item-info"><strong>Brand:</strong> <span class="pants-item-brand" contentEditable="false">${item.brand}</span></p>
-                <button class="pants-edit-btn">Edit</button>
-            `;
 
-            // Click event to update the central display when a pants image is clicked
-            img.onclick = () => {
-                pantsDisplay.src = img.src;
-            };
+   function populatebottomsItems() {
+       bottoms.forEach(item => {
+           const itemContainer = document.createElement('div');
+           itemContainer.classList.add('bottoms-item');
+           const img = document.createElement('img');
+           img.src = item.src;
+           img.alt = item.name;
 
-            itemContainer.appendChild(img);
-            itemContainer.appendChild(infoCard);
-            pantsItemsContainer.appendChild(itemContainer);
 
-            // Event for edit/save button
-            infoCard.querySelector('.pants-edit-btn').addEventListener('click', function() {
-                const name = infoCard.querySelector('.pants-item-name');
-                const brand = infoCard.querySelector('.pants-item-brand');
-                if (this.innerText === 'Edit') {
-                    name.contentEditable = "true";
-                    brand.contentEditable = "true";
-                    this.innerText = 'Save';
-                    name.focus();
-                } else {
-                    name.contentEditable = "false";
-                    brand.contentEditable = "false";
-                    this.innerText = 'Edit';
-                }
-            });
-        });
+           // Info card with editable fields
+           const infoCard = document.createElement('div');
+           infoCard.className = 'bottoms-info-card';
+           infoCard.innerHTML = `
+               <p class="bottoms-item-info"><strong>Name:</strong> <span class="bottoms-item-name" contentEditable="false">${item.name}</span></p>
+               <p class="bottoms-item-info"><strong>Brand:</strong> <span class="bottoms-item-brand" contentEditable="false">${item.brand}</span></p>
+               <button class="bottoms-edit-btn">Edit</button>
+		<button onclick='openDetailsModal(${JSON.stringify(item)})'>Learn More</button>
 
-        // Fill remaining grid slots with placeholders if necessary
-        const itemsCount = pants.length;
-        const totalSlots = 15; // Assuming a 5x3 grid
-        const remainingSlots = totalSlots - itemsCount;
-        for (let i = 0; i < remainingSlots; i++) {
-            const placeholder = document.createElement('div');
-            placeholder.classList.add('pants-placeholder');
-            pantsItemsContainer.appendChild(placeholder);
-        }
-    }
 
-    pantsIcon.addEventListener('click', function(e) {
-        e.preventDefault();
-        pantsPage.classList.toggle('active');
-        if (!pantsItemsContainer.hasChildNodes()) {
-            populatePantsItems();
-        }
-    });
+           `;
 
-    closePantsPageBtn.addEventListener('click', function() {
-        pantsPage.classList.remove('active');
-    });
-    });
+
+           // Click event to update the central display when a bottoms image is clicked
+           img.onclick = () => {
+               bottomsDisplay.src = img.src;
+           };
+
+
+           itemContainer.appendChild(img);
+           itemContainer.appendChild(infoCard);
+           bottomsItemsContainer.appendChild(itemContainer);
+
+
+           // Event for edit/save button
+           infoCard.querySelector('.bottoms-edit-btn').addEventListener('click', function() {
+               const name = infoCard.querySelector('.bottoms-item-name');
+               const brand = infoCard.querySelector('.bottoms-item-brand');
+               if (this.innerText === 'Edit') {
+                   name.contentEditable = "true";
+                   brand.contentEditable = "true";
+                   this.innerText = 'Save';
+                   name.focus();
+               } else {
+                   name.contentEditable = "false";
+                   brand.contentEditable = "false";
+                   this.innerText = 'Edit';
+               }
+           });
+       });
+
+
+       // Fill remaining grid slots with placeholders if necessary
+       const itemsCount = bottoms.length;
+       const totalSlots = 15; // Assuming a 5x3 grid
+       const remainingSlots = totalSlots - itemsCount;
+       for (let i = 0; i < remainingSlots; i++) {
+           const placeholder = document.createElement('div');
+           placeholder.classList.add('bottoms-placeholder');
+           bottomsItemsContainer.appendChild(placeholder);
+       }
+   }
+
+
+   bottomsIcon.addEventListener('click', function(e) {
+       e.preventDefault();
+       bottomsPage.classList.toggle('active');
+       if (!bottomsItemsContainer.hasChildNodes()) {
+           populatebottomsItems();
+       }
+   });
+
+
+   closebottomsPageBtn.addEventListener('click', function() {
+       bottomsPage.classList.remove('active');
+   });
+   });
 </script>
+
 
 <!-- Shoes Page Section, initially hidden -->
 <div id="shoesPage" class="shoes-page">
-    <!-- Your shoes content here -->
-    <button id="closeShoesPage" class="shoes-title">Shoes</button>
-    <div id="shoesItems" class="shoes-items"></div>
+   <!-- Your shoes content here -->
+   <button id="closeShoesPage" class="shoes-title">shoes</button>
+   <div id="shoesItems" class="shoes-items"></div>
 </div>
+
 
 <script>
 
-    document.addEventListener('DOMContentLoaded', function() {
-    const shoesIcon = document.getElementById('shoesIcon');
-    const shoesPage = document.getElementById('shoesPage');
-    const shoesItemsContainer = document.getElementById('shoesItems');
-    const shoesDisplay = document.getElementById('shoes'); // Main display area for pants
-    const closeShoesPageBtn = document.getElementById('closeShoesPage'); // Close button
 
-    const shoes = [
-        { src: 'defaults/shoes/shoes1.png', name: 'Sambas', brand: 'Adidas' },
-        { src: 'defaults/shoes/shoes2.png', name: '550s', brand: 'New Balance' },
-        { src: 'defaults/shoes/shoes3.png', name: 'Slippers', brand: 'Uggs' },
-    ];
+   document.addEventListener('DOMContentLoaded', function() {
+   const shoesIcon = document.getElementById('shoesIcon');
+   const shoesPage = document.getElementById('shoesPage');
+   const shoesItemsContainer = document.getElementById('shoesItems');
+   const shoesDisplay = document.getElementById('shoes'); // Main display area for bottoms
+   const closeShoesPageBtn = document.getElementById('closeShoesPage'); // Close button
 
-    function populateShoesItems() {
-        shoes.forEach(item => {
-            const itemContainer = document.createElement('div');
-            itemContainer.classList.add('shoes-item');
-            const img = document.createElement('img');
-            img.src = item.src;
-            img.alt = item.name;
-            // Info card with editable fields
-            const infoCard = document.createElement('div');
-            infoCard.className = 'shoes-info-card';
-            infoCard.innerHTML = `
-                <p class="shoes-item-info"><strong>Name:</strong> <span class="shoes-item-name" contentEditable="false">${item.name}</span></p>
-                <p class="shoes-item-info"><strong>Brand:</strong> <span class="shoes-item-brand" contentEditable="false">${item.brand}</span></p>
-                <button class="shoes-edit-btn">Edit</button>
-            `;
 
-            // Click event to update the central display when a pants image is clicked
-            img.onclick = () => {
-                shoesDisplay.src = img.src;
-            };
+   const shoes = [
+       { src: 'defaults/shoes/shoes1.png', name: 'Sambas', brand: 'Adidas' },
+       { src: 'defaults/shoes/shoes2.png', name: '550s', brand: 'New Balance' },
+       { src: 'defaults/shoes/shoes3.png', name: 'Slippers', brand: 'Uggs' },
+   ];
 
-            itemContainer.appendChild(img);
-            itemContainer.appendChild(infoCard);
-            shoesItemsContainer.appendChild(itemContainer);
 
-            // Event for edit/save button
-            infoCard.querySelector('.shoes-edit-btn').addEventListener('click', function() {
-                const name = infoCard.querySelector('.shoes-item-name');
-                const brand = infoCard.querySelector('.shoes-item-brand');
-                if (this.innerText === 'Edit') {
-                    name.contentEditable = "true";
-                    brand.contentEditable = "true";
-                    this.innerText = 'Save';
-                    name.focus();
-                } else {
-                    name.contentEditable = "false";
-                    brand.contentEditable = "false";
-                    this.innerText = 'Edit';
-                }
-            });
-        });
+   function populateShoesItems() {
+       shoes.forEach(item => {
+           const itemContainer = document.createElement('div');
+           itemContainer.classList.add('shoes-item');
+           const img = document.createElement('img');
+           img.src = item.src;
+           img.alt = item.name;
+           // Info card with editable fields
+           const infoCard = document.createElement('div');
+           infoCard.className = 'shoes-info-card';
+           infoCard.innerHTML = `
+               <p class="shoes-item-info"><strong>Name:</strong> <span class="shoes-item-name" contentEditable="false">${item.name}</span></p>
+               <p class="shoes-item-info"><strong>Brand:</strong> <span class="shoes-item-brand" contentEditable="false">${item.brand}</span></p>
+               <button class="shoes-edit-btn">Edit</button>
+		  <button onclick='openDetailsModal(${JSON.stringify(item)})'>Learn More</button>
 
-        // Fill remaining grid slots with placeholders if necessary
-        const itemsCount = pants.length;
-        const totalSlots = 15; // Assuming a 5x3 grid
-        const remainingSlots = totalSlots - itemsCount;
-        for (let i = 0; i < remainingSlots; i++) {
-            const placeholder = document.createElement('div');
-            placeholder.classList.add('shoes-placeholder');
-            shoesItemsContainer.appendChild(placeholder);
-        }
-    }
-    
-    shoesIcon.addEventListener('click', function(e) {
-        e.preventDefault();
-        shoesPage.classList.toggle('active');
-        if (!shoesItemsContainer.hasChildNodes()) {
-            populateShoesItems();
-        }
-    });
 
-    closeShoesPageBtn.addEventListener('click', function() {
-        shoesPage.classList.remove('active');
-    });
-    });
+           `;
+
+
+           // Click event to update the central display when a bottoms image is clicked
+           img.onclick = () => {
+               shoesDisplay.src = img.src;
+           };
+
+
+           itemContainer.appendChild(img);
+           itemContainer.appendChild(infoCard);
+           shoesItemsContainer.appendChild(itemContainer);
+
+
+           // Event for edit/save button
+           infoCard.querySelector('.shoes-edit-btn').addEventListener('click', function() {
+               const name = infoCard.querySelector('.shoes-item-name');
+               const brand = infoCard.querySelector('.shoes-item-brand');
+               if (this.innerText === 'Edit') {
+                   name.contentEditable = "true";
+                   brand.contentEditable = "true";
+                   this.innerText = 'Save';
+                   name.focus();
+               } else {
+                   name.contentEditable = "false";
+                   brand.contentEditable = "false";
+                   this.innerText = 'Edit';
+               }
+           });
+       });
+
+
+       // Fill remaining grid slots with placeholders if necessary
+       const itemsCount = bottoms.length;
+       const totalSlots = 15; // Assuming a 5x3 grid
+       const remainingSlots = totalSlots - itemsCount;
+       for (let i = 0; i < remainingSlots; i++) {
+           const placeholder = document.createElement('div');
+           placeholder.classList.add('shoes-placeholder');
+           shoesItemsContainer.appendChild(placeholder);
+       }
+   }
+  
+   shoesIcon.addEventListener('click', function(e) {
+       e.preventDefault();
+       shoesPage.classList.toggle('active');
+       if (!shoesItemsContainer.hasChildNodes()) {
+           populateShoesItems();
+       }
+   });
+
+
+   closeShoesPageBtn.addEventListener('click', function() {
+       shoesPage.classList.remove('active');
+   });
+   });
 </script>
+
 
 <!-- Saved Fits Page Section with Playlist -->
 <div id="savedFitsPage" class="saved-fits-page">
 
-    <!-- Close button at the top center -->
-    <button id="closeSavedFitsPage" class="saved-fits-title">Saved Fits</button>
 
-    <!-- Create Playlist Button -->
-    <button id="createPlaylistButton" class="create-playlist-btn">Create Playlist</button>
+   <!-- Close button at the top center -->
+   <button id="closeSavedFitsPage" class="saved-fits-title">saved fits</button>
 
-    <!-- Container for all playlists, initially empty -->
-    <div id="playlistsContainer" class="playlists-container"></div>
 
-    <!-- Playlist Display for outfits -->
-    <div id="playlistDisplay" class="playlist-display">
-        <!-- The big square for the outfit display -->
-        <div id="outfitDisplay" class="outfit-display"></div>
+   <!-- Create Playlist Button -->
+   <button id="createPlaylistButton" class="create-playlist-btn">Create Playlist</button>
 
-        <!-- Playback controls -->
-        <div class="playlist-controls">
-            <button id="prevOutfit" class="control-btn">Prev</button>
-            <button id="playOutfit" class="control-btn">Play</button>
-            <button id="nextOutfit" class="control-btn">Next</button>
-        </div>
-    </div>
 
-    <!-- Container for displaying saved outfits -->
-    <div id="savedFitsItems" class="saved-fits-items"></div>
+   <!-- Container for all playlists, initially empty -->
+   <div id="playlistsContainer" class="playlists-container"></div>
+
+
+   <!-- Playlist Display for outfits -->
+   <div id="playlistDisplay" class="playlist-display">
+       <!-- The big square for the outfit display -->
+       <div id="outfitDisplay" class="outfit-display"></div>
+
+
+       <!-- Playback controls -->
+       <div class="playlist-controls">
+           <button id="prevOutfit" class="control-btn">Prev</button>
+           <button id="playOutfit" class="control-btn">Play</button>
+           <button id="nextOutfit" class="control-btn">Next</button>
+       </div>
+   </div>
+
+
+   <!-- Container for displaying saved outfits -->
+   <div id="savedFitsItems" class="saved-fits-items"></div>
 </div>
-  
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Save Current Outfit Button
-        const saveOutfitButton = document.getElementById('saveOutfitButton');
-        const headwearDisplay = document.getElementById('headwear');
-        const hoodiesDisplay = document.getElementById('hoodies');
-        const pantsDisplay = document.getElementById('pants');
-        const shoesDisplay = document.getElementById('shoes');
+ <script>
+   document.addEventListener('DOMContentLoaded', function() {
+       // Save Current Outfit Button
+       const saveOutfitButton = document.getElementById('saveOutfitButton');
+       const headwearDisplay = document.getElementById('headwear');
+       const topsDisplay = document.getElementById('tops');
+       const bottomsDisplay = document.getElementById('bottoms');
+       const shoesDisplay = document.getElementById('shoes');
 
-        // Handle saving the current outfit
-        saveOutfitButton.addEventListener('click', function() {
-            const savedOutfits = JSON.parse(sessionStorage.getItem('savedOutfits')) || [];
-            const currentOutfit = {
-                headwear: headwearDisplay.src,
-                hoodie: hoodiesDisplay.src,
-                pants: pantsDisplay.src,
-                shoes: shoesDisplay.src
-            };
-            savedOutfits.push(currentOutfit);
-            sessionStorage.setItem('savedOutfits', JSON.stringify(savedOutfits));
-            alert('Outfit saved successfully!'); // Optional: feedback to the user
-        });
 
-        // Display saved outfits
-        const savedFitsItemsContainer = document.getElementById('savedFitsItems');
-        const savedFitsIcon = document.getElementById('savedFitsIcon');
-        const savedFitsPage = document.getElementById('savedFitsPage');
-        const closeSavedFitsPageBtn = document.getElementById('closeSavedFitsPage');
+       // Handle saving the current outfit
+       saveOutfitButton.addEventListener('click', function() {
+           const savedOutfits = JSON.parse(sessionStorage.getItem('savedOutfits')) || [];
+           const currentOutfit = {
+               headwear: headwearDisplay.src,
+               hoodie: topsDisplay.src,
+               bottoms: bottomsDisplay.src,
+               shoes: shoesDisplay.src
+           };
+           savedOutfits.push(currentOutfit);
+           sessionStorage.setItem('savedOutfits', JSON.stringify(savedOutfits));
+           alert('Outfit saved successfully!'); // Optional: feedback to the user
+       });
 
-        // Toggle saved fits page
-        savedFitsIcon.addEventListener('click', function(e) {
-            e.preventDefault();
-            savedFitsPage.classList.toggle('active');
-            displaySavedFits();
-        });
 
-        // Close the saved fits page
-        closeSavedFitsPageBtn.addEventListener('click', function() {
-            savedFitsPage.classList.remove('active');
-        });
+       // Display saved outfits
+       const savedFitsItemsContainer = document.getElementById('savedFitsItems');
+       const savedFitsIcon = document.getElementById('savedFitsIcon');
+       const savedFitsPage = document.getElementById('savedFitsPage');
+       const closeSavedFitsPageBtn = document.getElementById('closeSavedFitsPage');
 
-        // Use event delegation for handling clicks on dynamic elements
-        savedFitsItemsContainer.addEventListener('click', function(event) {
-            const target = event.target;
 
-            // Handle deletion of a fit
-            if (target.classList.contains('fit-delete')) {
-                const index = target.getAttribute('data-index');
-                deleteFit(index);
-                event.stopPropagation(); // Prevent further propagation of the click event
-            }
-        });
-        // Add a separate listener for clicking the fit container to update the display
-        savedFitsItemsContainer.addEventListener('click', function(event) {
-            if (event.target.closest('.fit-item') && !event.target.classList.contains('fit-delete')) {
-                // Extract the fit container
-                const outfit = event.target.closest('.fit-item');
-                updateDisplay(outfit);
-            }
-        });
+       // Toggle saved fits page
+       savedFitsIcon.addEventListener('click', function(e) {
+           e.preventDefault();
+           savedFitsPage.classList.toggle('active');
+           displaySavedFits();
+       });
 
-        function deleteFit(index) {
-        let savedFits = JSON.parse(sessionStorage.getItem('savedOutfits')) || [];
-        savedFits.splice(index, 1);  // Remove the item at the specified index
-        sessionStorage.setItem('savedOutfits', JSON.stringify(savedFits)); // Update sessionStorage
-        displaySavedFits(); // Refresh the display of saved fits
-        }
 
-        // Function to handle adding an outfit to the playlist
-        function addToPlaylist(outfit) {
-            // Assuming 'playlist' is an array holding your playlist outfits in session storage
-            const playlist = JSON.parse(sessionStorage.getItem('playlist')) || [];
-            playlist.push(outfit);
-            sessionStorage.setItem('playlist', JSON.stringify(playlist));
-            alert('Added to playlist!'); // Optional: Provide user feedback
-        }
+       // Close the saved fits page
+       closeSavedFitsPageBtn.addEventListener('click', function() {
+           savedFitsPage.classList.remove('active');
+       });
 
-        // Function to display saved fits
-        function displaySavedFits() {
-            const savedFitsItemsContainer = document.getElementById('savedFitsItems');
-            savedFitsItemsContainer.innerHTML = ''; // Clear previous content
-            const savedOutfits = JSON.parse(sessionStorage.getItem('savedOutfits')) || [];
-            // Calculate remaining slots to fill with placeholders
 
-            const totalSlots = 15; // Total slots in a 5x3 grid
-            const remainingSlots = totalSlots - savedOutfits.length;
-            savedOutfits.forEach((fit, index) => {
-                const fitContainer = document.createElement('div');
-                fitContainer.classList.add('fit-item');
-                // Add image elements for each part of the outfit
-                fitContainer.innerHTML = `
-                    <div class="fit-delete" onclick="deleteFit(${index})">X</div>
-                    <img src="${fit.headwear}" alt="Headwear" style="height: 30px; width: auto;">
-                    <img src="${fit.hoodie}" alt="Hoodie" style="height: 70px; width: auto;">
-                    <img src="${fit.pants}" alt="Pants" style="height: 80px; width: auto;">
-                    <img src="${fit.shoes}" alt="Shoes" style="height: 40px; width: auto;">
-                `;
-                const addToPlaylistButton = document.createElement('button');
-                addToPlaylistButton.classList.add('add-to-playlist-btn');
-                addToPlaylistButton.textContent = '+';
-                addToPlaylistButton.onclick = () => addToPlaylist(fit); // Add the current outfit to the playlist
-                fitContainer.appendChild(addToPlaylistButton);
-                savedFitsItemsContainer.appendChild(fitContainer);
-                // Add click event listener to update the current display
-                fitContainer.addEventListener('click', () => {
-                    document.getElementById('headwear').src = fit.headwear;
-                    document.getElementById('hoodies').src = fit.hoodie;
-                    document.getElementById('pants').src = fit.pants;
-                    document.getElementById('shoes').src = fit.shoes;
-                });
+       // Use event delegation for handling clicks on dynamic elements
+       savedFitsItemsContainer.addEventListener('click', function(event) {
+           const target = event.target;
 
-                // Optional: Highlight on hover to indicate clickable
-                fitContainer.addEventListener('mouseover', () => {
-                    fitContainer.style.cursor = 'pointer';
-                    fitContainer.style.boxShadow = '0 4px 8px rgba(0,0,0,0.3)';
-                });
-                fitContainer.addEventListener('mouseout', () => {
-                    fitContainer.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
-                });
-            });
-        }
-        // Playlist functionality
-        let playing = false;
-        let currentOutfitIndex = 0;
-        let playlistInterval;
 
-        const playButton = document.getElementById('playOutfit');
-        const prevButton = document.getElementById('prevOutfit');
-        const nextButton = document.getElementById('nextOutfit');
-        const outfitDisplay = document.getElementById('outfitDisplay');
-        const savedOutfits = JSON.parse(sessionStorage.getItem('savedOutfits')) || [];
+           // Handle deletion of a fit
+           if (target.classList.contains('fit-delete')) {
+               const index = target.getAttribute('data-index');
+               deleteFit(index);
+               event.stopPropagation(); // Prevent further propagation of the click event
+           }
+       });
+       // Add a separate listener for clicking the fit container to update the display
+       savedFitsItemsContainer.addEventListener('click', function(event) {
+           if (event.target.closest('.fit-item') && !event.target.classList.contains('fit-delete')) {
+               // Extract the fit container
+               const outfit = event.target.closest('.fit-item');
+               updateDisplay(outfit);
+           }
+       });
 
-        // Function to display an outfit in the playlist display
-        function displayOutfit(index) {
-            const outfit = savedOutfits[index];
-            outfitDisplay.innerHTML = `
-                <img src="${outfit.headwear}" alt="Headwear" style="height: 30px; width: auto;">
-                <img src="${outfit.hoodie}" alt="Hoodie" style="height: 70px; width: auto;">
-                <img src="${outfit.pants}" alt="Pants" style="height: 80px; width: auto;">
-                <img src="${outfit.shoes}" alt="Shoes" style="height: 40px; width: auto;">
-            `;
-        }
 
-        playButton.addEventListener('click', () => {
-            playing = !playing;
-            playButton.textContent = playing ? 'Pause' : 'Play';
-            if (playing) {
-                playlistInterval = setInterval(() => {
-                    currentOutfitIndex = (currentOutfitIndex + 1) % savedOutfits.length;
-                    displayOutfit(currentOutfitIndex);
-                }, 2000); // Change outfits every 2 seconds
-            } else {
-                clearInterval(playlistInterval);
-            }
-        });
+       function deleteFit(index) {
+       let savedFits = JSON.parse(sessionStorage.getItem('savedOutfits')) || [];
+       savedFits.splice(index, 1);  // Remove the item at the specified index
+       sessionStorage.setItem('savedOutfits', JSON.stringify(savedFits)); // Update sessionStorage
+       displaySavedFits(); // Refresh the display of saved fits
+       }
 
-        prevButton.addEventListener('click', () => {
-            currentOutfitIndex = (currentOutfitIndex - 1 + savedOutfits.length) % savedOutfits.length;
-            displayOutfit(currentOutfitIndex);
-        });
 
-        nextButton.addEventListener('click', () => {
-            currentOutfitIndex = (currentOutfitIndex + 1) % savedOutfits.length;
-            displayOutfit(currentOutfitIndex);
-        });
+       // Function to handle adding an outfit to the playlist
+       function addToPlaylist(outfit) {
+           // Assuming 'playlist' is an array holding your playlist outfits in session storage
+           const playlist = JSON.parse(sessionStorage.getItem('playlist')) || [];
+           playlist.push(outfit);
+           sessionStorage.setItem('playlist', JSON.stringify(playlist));
+           alert('Added to playlist!'); // Optional: Provide user feedback
+       }
 
-        // Initially display the first outfit
-        if (savedOutfits.length > 0) {
-            displayOutfit(0);
-        }
-    });
+
+       // Function to display saved fits
+       function displaySavedFits() {
+           const savedFitsItemsContainer = document.getElementById('savedFitsItems');
+           savedFitsItemsContainer.innerHTML = ''; // Clear previous content
+           const savedOutfits = JSON.parse(sessionStorage.getItem('savedOutfits')) || [];
+           // Calculate remaining slots to fill with placeholders
+
+
+           const totalSlots = 15; // Total slots in a 5x3 grid
+           const remainingSlots = totalSlots - savedOutfits.length;
+           savedOutfits.forEach((fit, index) => {
+               const fitContainer = document.createElement('div');
+               fitContainer.classList.add('fit-item');
+               // Add image elements for each part of the outfit
+               fitContainer.innerHTML = `
+                   <div class="fit-delete" onclick="deleteFit(${index})">X</div>
+                   <img src="${fit.headwear}" alt="Headwear" style="height: 30px; width: auto;">
+                   <img src="${fit.hoodie}" alt="Hoodie" style="height: 70px; width: auto;">
+                   <img src="${fit.bottoms}" alt="bottoms" style="height: 80px; width: auto;">
+                   <img src="${fit.shoes}" alt="Shoes" style="height: 40px; width: auto;">
+               `;
+               const addToPlaylistButton = document.createElement('button');
+               addToPlaylistButton.classList.add('add-to-playlist-btn');
+               addToPlaylistButton.textContent = '+';
+               addToPlaylistButton.onclick = () => addToPlaylist(fit); // Add the current outfit to the playlist
+               fitContainer.appendChild(addToPlaylistButton);
+               savedFitsItemsContainer.appendChild(fitContainer);
+               // Add click event listener to update the current display
+               fitContainer.addEventListener('click', () => {
+                   document.getElementById('headwear').src = fit.headwear;
+                   document.getElementById('tops').src = fit.hoodie;
+                   document.getElementById('bottoms').src = fit.bottoms;
+                   document.getElementById('shoes').src = fit.shoes;
+               });
+
+
+               // Optional: Highlight on hover to indicate clickable
+               fitContainer.addEventListener('mouseover', () => {
+                   fitContainer.style.cursor = 'pointer';
+                   fitContainer.style.boxShadow = '0 4px 8px rgba(0,0,0,0.3)';
+               });
+               fitContainer.addEventListener('mouseout', () => {
+                   fitContainer.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+               });
+           });
+       }
+       // Playlist functionality
+       let playing = false;
+       let currentOutfitIndex = 0;
+       let playlistInterval;
+
+
+       const playButton = document.getElementById('playOutfit');
+       const prevButton = document.getElementById('prevOutfit');
+       const nextButton = document.getElementById('nextOutfit');
+       const outfitDisplay = document.getElementById('outfitDisplay');
+       const savedOutfits = JSON.parse(sessionStorage.getItem('savedOutfits')) || [];
+
+
+       // Function to display an outfit in the playlist display
+       function displayOutfit(index) {
+           const outfit = savedOutfits[index];
+           outfitDisplay.innerHTML = `
+               <img src="${outfit.headwear}" alt="Headwear" style="height: 30px; width: auto;">
+               <img src="${outfit.hoodie}" alt="Hoodie" style="height: 70px; width: auto;">
+               <img src="${outfit.bottoms}" alt="bottoms" style="height: 80px; width: auto;">
+               <img src="${outfit.shoes}" alt="Shoes" style="height: 40px; width: auto;">
+           `;
+       }
+
+
+       playButton.addEventListener('click', () => {
+           playing = !playing;
+           playButton.textContent = playing ? 'Pause' : 'Play';
+           if (playing) {
+               playlistInterval = setInterval(() => {
+                   currentOutfitIndex = (currentOutfitIndex + 1) % savedOutfits.length;
+                   displayOutfit(currentOutfitIndex);
+               }, 2000); // Change outfits every 2 seconds
+           } else {
+               clearInterval(playlistInterval);
+           }
+       });
+
+
+       prevButton.addEventListener('click', () => {
+           currentOutfitIndex = (currentOutfitIndex - 1 + savedOutfits.length) % savedOutfits.length;
+           displayOutfit(currentOutfitIndex);
+       });
+
+
+       nextButton.addEventListener('click', () => {
+           currentOutfitIndex = (currentOutfitIndex + 1) % savedOutfits.length;
+           displayOutfit(currentOutfitIndex);
+       });
+
+
+       // Initially display the first outfit
+       if (savedOutfits.length > 0) {
+           displayOutfit(0);
+       }
+   });
 </script>
 
+
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const createPlaylistButton = document.getElementById('createPlaylistButton');
-        const playlistsContainer = document.getElementById('playlistsContainer');
-        let playlists = JSON.parse(sessionStorage.getItem('playlists')) || [];
+   document.addEventListener('DOMContentLoaded', function() {
+       const createPlaylistButton = document.getElementById('createPlaylistButton');
+       const playlistsContainer = document.getElementById('playlistsContainer');
+       let playlists = JSON.parse(sessionStorage.getItem('playlists')) || [];
 
-        function createPlaylistDisplay(playlistIndex) {
-            let playlistDisplay = document.createElement('div');
-            playlistDisplay.classList.add('playlist-display');
 
-            let outfitDisplay = document.createElement('div');
-            outfitDisplay.classList.add('outfit-display');
-            outfitDisplay.id = `outfitDisplay${playlistIndex}`;
+       function createPlaylistDisplay(playlistIndex) {
+           let playlistDisplay = document.createElement('div');
+           playlistDisplay.classList.add('playlist-display');
 
-            // Add delete button directly to the outfit display for better positioning
-            let deleteButton = document.createElement('button');
-            deleteButton.textContent = 'X';
-            deleteButton.classList.add('delete-playlist-btn');
-            deleteButton.onclick = function() { deletePlaylist(playlistIndex); };
-            outfitDisplay.appendChild(deleteButton);  // Add the delete button to the outfit display
 
-            let controls = document.createElement('div');
-            controls.classList.add('playlist-controls');
+           let outfitDisplay = document.createElement('div');
+           outfitDisplay.classList.add('outfit-display');
+           outfitDisplay.id = `outfitDisplay${playlistIndex}`;
 
-            let prevButton = document.createElement('button');
-            prevButton.classList.add('control-btn');
-            prevButton.textContent = 'Prev';
 
-            let playButton = document.createElement('button');
-            playButton.classList.add('control-btn');
-            playButton.textContent = 'Play';
-            let playing = false;
-            playButton.addEventListener('click', () => {
-                playing = !playing;
-                playButton.textContent = playing ? 'Pause' : 'Play';
-                if (playing) {
-                    playlistInterval = setInterval(() => {
-                        currentOutfitIndex = (currentOutfitIndex + 1) % savedOutfits.length;
-                        displayOutfit(currentOutfitIndex);
-                    }, 2000); // Change outfits every 2 seconds
-                } else {
-                    clearInterval(playlistInterval);
-                }
-            });
+           // Add delete button directly to the outfit display for better positioning
+           let deleteButton = document.createElement('button');
+           deleteButton.textContent = 'X';
+           deleteButton.classList.add('delete-playlist-btn');
+           deleteButton.onclick = function() { deletePlaylist(playlistIndex); };
+           outfitDisplay.appendChild(deleteButton);  // Add the delete button to the outfit display
 
-            let nextButton = document.createElement('button');
-            nextButton.classList.add('control-btn');
-            nextButton.textContent = 'Next';
 
-            controls.appendChild(prevButton);
-            controls.appendChild(playButton);
-            controls.appendChild(nextButton);
+           let controls = document.createElement('div');
+           controls.classList.add('playlist-controls');
 
-            playlistDisplay.appendChild(outfitDisplay);
-            playlistDisplay.appendChild(controls);
 
-            return playlistDisplay;
-        }
+           let prevButton = document.createElement('button');
+           prevButton.classList.add('control-btn');
+           prevButton.textContent = 'Prev';
 
-        function displayPlaylists() {
-            playlistsContainer.innerHTML = '';
-            playlists.forEach((playlist, index) => {
-                let playlistDisplay = createPlaylistDisplay(index);
-                playlistsContainer.appendChild(playlistDisplay);
-            });
-        }
 
-        function deletePlaylist(index) {
-            playlists.splice(index, 1); // Remove the playlist from the array
-            sessionStorage.setItem('playlists', JSON.stringify(playlists)); // Update sessionStorage
-            displayPlaylists(); // Redraw the playlists
-        }
+           let playButton = document.createElement('button');
+           playButton.classList.add('control-btn');
+           playButton.textContent = 'Play';
+           let playing = false;
+           playButton.addEventListener('click', () => {
+               playing = !playing;
+               playButton.textContent = playing ? 'Pause' : 'Play';
+               if (playing) {
+                   playlistInterval = setInterval(() => {
+                       currentOutfitIndex = (currentOutfitIndex + 1) % savedOutfits.length;
+                       displayOutfit(currentOutfitIndex);
+                   }, 2000); // Change outfits every 2 seconds
+               } else {
+                   clearInterval(playlistInterval);
+               }
+           });
 
-        createPlaylistButton.addEventListener('click', function() {
-            playlists.push({}); // Assuming each playlist is an object
-            sessionStorage.setItem('playlists', JSON.stringify(playlists));
-            displayPlaylists();
-        });
 
-        displayPlaylists();
-    });
+           let nextButton = document.createElement('button');
+           nextButton.classList.add('control-btn');
+           nextButton.textContent = 'Next';
+
+
+           controls.appendChild(prevButton);
+           controls.appendChild(playButton);
+           controls.appendChild(nextButton);
+
+
+           playlistDisplay.appendChild(outfitDisplay);
+           playlistDisplay.appendChild(controls);
+
+
+           return playlistDisplay;
+       }
+
+
+       function displayPlaylists() {
+           playlistsContainer.innerHTML = '';
+           playlists.forEach((playlist, index) => {
+               let playlistDisplay = createPlaylistDisplay(index);
+               playlistsContainer.appendChild(playlistDisplay);
+           });
+       }
+
+
+       function deletePlaylist(index) {
+           playlists.splice(index, 1); // Remove the playlist from the array
+           sessionStorage.setItem('playlists', JSON.stringify(playlists)); // Update sessionStorage
+           displayPlaylists(); // Redraw the playlists
+       }
+
+
+       createPlaylistButton.addEventListener('click', function() {
+           playlists.push({}); // Assuming each playlist is an object
+           sessionStorage.setItem('playlists', JSON.stringify(playlists));
+           displayPlaylists();
+       });
+
+
+       displayPlaylists();
+   });
 </script>
+
+
+
+
+<!-- Universal Details Modal -->
+<div id="detailsModal" class="modal">
+   <div class="modal-content">
+       <span class="close">&times;</span>
+       <img id="modalImage" src="" alt="Item Image">
+       <div id="modalDescription">
+           <h3 id="modalName"></h3>
+           <p id="modalBrand"></p>
+       </div>
+   </div>
+</div>
+
+
+<script>
+   function openDetailsModal(item) {
+   const modal = document.getElementById('detailsModal');
+   document.getElementById('modalImage').src = item.src;
+   document.getElementById('modalName').textContent = item.name;
+   document.getElementById('modalBrand').textContent = item.brand;
+
+
+   modal.style.display = "block";
+}
+document.querySelectorAll('.close').forEach(closeButton => {
+   closeButton.onclick = function() {
+       this.parentElement.parentElement.style.display = "none";
+   }
+});
+
+
+window.onclick = function(event) {
+   if (event.target.className === 'modal') {
+       event.target.style.display = "none";
+   }
+}
+</script>
+
+
 </body>
 </html>
+
