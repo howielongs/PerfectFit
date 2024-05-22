@@ -1,5 +1,75 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
 
+/* Cover Page CSS */
+
+
+.cover-page {
+   position: fixed;
+   top: 0;
+   left: 0;
+   background-image: url('defaults/backgrounds/background1.png'); /* Update with the path to your image */
+   background-position: center; /* Center the background image */
+   background-repeat: no-repeat; /* Do not repeat the image */
+   background-size: cover; /* Resize the background to cover the entire container */
+   height: 100vh; /* Full height of the viewport */
+   width: 100vw; /* Full width of the viewport */
+   display: flex;
+   align-items: flex-start; /* Align items to the start of the flex container */
+   justify-content: center;
+   text-align: center;
+   padding-top: 10vh; /* Adds padding to the top to push content down slightly */
+
+
+}
+
+
+.cover-content {
+   padding-top: 5vh; /* Adjust padding to move content higher */
+}
+
+
+
+
+.cover-content h1 {
+   font-size: 2.5em;
+   font-family: monospace;
+   color: #fff;
+   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Black outline */
+}
+
+
+.cover-content p {
+   color: #000; /* Ensuring black text for contrast against lighter backgrounds */
+   font-family: monospace;
+   font-size: 1.5em;
+}
+
+
+.cover-content button {
+   background-color: #ff4181; /* Keeping the pink color for visual interest */
+   color: white; /* White text for high contrast on the button */
+   border: none;
+   border-radius: 5px;
+   padding: 10px 20px;
+   font-size: 1.2em;
+   cursor: pointer;
+   transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+
+.cover-content button:hover {
+   transform: translateY(-5px); /* Adding interaction feedback */
+   background-color: #e63770; /* A slightly darker pink on hover */
+}
+
+
+.cover-content button {
+   padding: 10px 20px;
+   font-size: 1.2em;
+   margin-top: 20px;
+   cursor: pointer;
+}
+
 
 .container {
    display: inline-block;
@@ -35,14 +105,14 @@
 }
 
 
-.hoodie, .pant {
+.top, .bottom {
    padding: min(5vh, 10vw); /* Adjusts padding based on viewport size */
 }
 
 
 /* For better control, consider adding responsive breakpoints */
 @media (max-width: 768px) {
-   .hoodie, .pant {
+   .top, .bottom {
    transform: translate(-50%, -50%); /* Adjusts position for smaller screens */
    }
 }
@@ -58,7 +128,7 @@
 }
 
 
-.hoodie{
+.top{
    margin: 0;
    position: absolute;
    top: 30%;
@@ -69,7 +139,7 @@
 }
 
 
-.pant{
+.bottom{
    margin: 0;
    position: absolute;
    top: 15%;
@@ -105,7 +175,7 @@
 }
 
 
-.hoodieNextButton{
+.topNextButton{
    position: absolute;
    top: 40%;
    right: 25%;
@@ -113,7 +183,7 @@
 }
 
 
-.hoodiePrevButton{
+.topPrevButton{
    position: absolute;
    top: 40%;
    left: 25%;
@@ -121,7 +191,7 @@
 }
 
 
-.bottomsNextButton{
+.bottomNextButton{
    position: absolute;
    top: 60%;
    right: 25%;
@@ -129,7 +199,7 @@
 }
 
 
-.bottomsPrevButton{
+.bottomPrevButton{
    position: absolute;
    top: 60%;
    left: 25%;
@@ -577,99 +647,7 @@ but works dosent overlap as much*/
 
 
 
-.headwear-info-card {
-   position: absolute;
-   bottom: -100px;  /* Adjust so it's just below the item */
-   left: 0;
-   width: 100%; /* Matches the width of the headwear item */
-   background-color: white;
-   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-   opacity: 0;
-   visibility: hidden;
-   transition: all 0.3s ease;
-   z-index: 2; /* Ensure this is higher than the item's z-index */
-}
-
-
-.headwear-item:hover .headwear-info-card {
-   opacity: 1;
-   visibility: visible;
-   bottom: -140; /* Position it directly at the bottom of the item */
-}
-
-
-.headwear-item-info {
-   margin: 10px 0;
-   font-size: 14px; /* Adjust size as needed */
-}
-
-
-
-
-.headwear-item-info strong {
-   margin-right: 5px; /* Space between label and editable text */
-}
-
-
-.headwear-item-name, .headwear-item-brand {
-   display: inline-block; /* Makes span behave more like an input */
-   min-width: 50px; /* Ensures the editable area is sufficiently wide */
-   background: rgba(255, 255, 255, 0.5); /* Light background for editable areas */
-   border-bottom: 1px dashed #ccc; /* Underline style to indicate editability */
-}
-
-
-
-
-.headwear-edit-btn {
-   padding: 5px 10px;
-   background-color: #4CAF50;
-   color: white;
-   border: none;
-   border-radius: 5px;
-   cursor: pointer;
-   margin-top: 10px;
-}
-
-
-.headwear-edit-btn:hover {
-   background-color: #45a049;
-}
-
-
-.headwear-placeholder {
-   background-color: #f0f0f0;
-   border-radius: 50%;
-}
-
-
-/* Combine hover effects for both headwear items and placeholders */
-.headwear-item:hover, .headwear-placeholder:hover {
-   transform: translateY(-10px); /* Hover effect */
-   cursor: pointer; /* Change cursor to indicate clickable */
-   transition: transform 0.2s ease-in-out; /* Smooth hover effect */
-}
-
-
-.headwear-page .headwear-item {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   width: 100%; /* Adjust size as needed */
-   height: 100%; /* Adjust size as needed */
-   cursor: pointer;
-   transition: transform 0.2s ease-in-out; /* Smooth hover effect */
-}
-
-
-.headwear-page .headwear-item:hover {
-   transform: translateY(-10px); /* Hover effect */
-}
-
-
-/* Hoodie SidePage */
-
-
+/* Tops SidePage */
 .tops-page {
    padding-top: 8px; /* Add some padding to the top of the side page for the title */
    position: fixed;
@@ -688,7 +666,6 @@ but works dosent overlap as much*/
    color: #333; /* Dark text for contrast */
    font-family: monospace;
 }
-
 
 .tops-title {
    all: unset; /* Removes default button styling */
@@ -712,25 +689,21 @@ but works dosent overlap as much*/
    max-width: 80%;
 }
 
-
 .tops-title:hover {
    transform: translateY(-10px);
    cursor: pointer;
    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
 }
 
-
 .tops-page.active {
    transform: translateX(0); /* Slide in to view */
 }
-
 
 .tops-page .text, .tops-page h2 {
    padding: 0 20px; /* Add padding to the sides */
    font-size: calc(0.5vw + 0.5rem); /* Combine viewport width and a minimum size */
    word-wrap: break-word; /* Ensure long words don't overflow */
 }
-
 
 .tops-items {
    display: grid;
@@ -741,14 +714,12 @@ but works dosent overlap as much*/
    overflow-y: auto; /* Allows scrolling if more items are added */
 }
 
-
 .tops-item, .tops-placeholder {
    width: 100%;
    height: auto;
    aspect-ratio: 1;
    justify-self: center;
 }
-
 
 .tops-item {
    position: relative;
@@ -763,23 +734,19 @@ but works dosent overlap as much*/
    z-index: 1;
 }
 
-
 .tops-item:hover {
    z-index: 3;
 }
-
 
 .tops-item img {
    max-width: 80%;
    max-height: 80%;
 }
-
-
-.tops-info-card {
+.tops-info-card, .bottoms-info-card, .shoes-info-card, .headwear-info-card {
    position: absolute;
-   bottom: -100px;  /* Adjust so it's just below the item */
+   bottom: -60px;  /* Adjusted to position the card lower */
    left: 0;
-   width: 100%; /* Matches the width of the hoodie item */
+   width: 100%; /* Matches the width of the item */
    background-color: white;
    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
    opacity: 0;
@@ -788,34 +755,33 @@ but works dosent overlap as much*/
    z-index: 2; /* Ensure this is higher than the item's z-index */
 }
 
-
-.tops-item:hover .tops-info-card {
+.tops-item:hover .tops-info-card, 
+.bottoms-item:hover .bottoms-info-card, 
+.shoes-item:hover .shoes-info-card, 
+.headwear-item:hover .headwear-info-card {
    opacity: 1;
    visibility: visible;
-   bottom: -140; /* Position it directly at the bottom of the item */
+   bottom: -190px; /* Position it directly at the bottom of the item when visible */
 }
 
-
-.tops-item-info {
+.tops-item-info, .bottoms-item-info, .shoes-item-info, .headwear-item-info {
    margin: 10px 0;
    font-size: 14px; /* Adjust size as needed */
 }
 
-
-.tops-item-info strong {
+.tops-item-info strong, .bottoms-item-info strong, .shoes-item-info strong, .headwear-item-info strong {
    margin-right: 5px; /* Space between label and editable text */
 }
 
-
-.tops-item-name, .tops-item-brand {
+.tops-item-name, .bottoms-item-name, .shoes-item-name, .headwear-item-name, 
+.tops-item-brand, .bottoms-item-brand, .shoes-item-brand, .headwear-item-brand {
    display: inline-block; /* Makes span behave more like an input */
    min-width: 50px; /* Ensures the editable area is sufficiently wide */
    background: rgba(255, 255, 255, 0.5); /* Light background for editable areas */
    border-bottom: 1px dashed #ccc; /* Underline style to indicate editability */
 }
 
-
-.tops-edit-btn {
+.tops-edit-btn, .bottoms-edit-btn, .shoes-edit-btn, .headwear-edit-btn {
    padding: 5px 10px;
    background-color: #4CAF50;
    color: white;
@@ -825,27 +791,24 @@ but works dosent overlap as much*/
    margin-top: 10px;
 }
 
-
-.tops-edit-btn:hover {
+.tops-edit-btn:hover, .bottoms-edit-btn:hover, .shoes-edit-btn:hover, .headwear-edit-btn:hover {
    background-color: #45a049;
 }
 
-
-.tops-placeholder {
+.tops-placeholder, .bottoms-placeholder, .shoes-placeholder, .headwear-placeholder {
    background-color: #f0f0f0;
    border-radius: 50%;
 }
 
-
-/* Combine hover effects for both hoodie items and placeholders */
-.tops-item:hover, .tops-placeholder:hover {
+/* Combine hover effects for items and placeholders */
+.tops-item:hover, .bottoms-item:hover, .shoes-item:hover, .headwear-item:hover, 
+.tops-placeholder:hover, .bottoms-placeholder:hover, .shoes-placeholder:hover, .headwear-placeholder:hover {
    transform: translateY(-10px); /* Hover effect */
    cursor: pointer; /* Change cursor to indicate clickable */
    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
 }
 
-
-.tops-page .tops-item {
+.tops-page .tops-item, .bottoms-page .bottoms-item, .shoes-page .shoes-item, .headwear-page .headwear-item {
    display: flex;
    justify-content: center;
    align-items: center;
@@ -855,15 +818,13 @@ but works dosent overlap as much*/
    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
 }
 
-
-.tops-page .tops-item:hover {
+.tops-page .tops-item:hover, .bottoms-page .bottoms-item:hover, .shoes-page .shoes-item:hover, .headwear-page .headwear-item:hover {
    transform: translateY(-10px); /* Hover effect */
 }
 
 
-/* bottoms SidePage */
 
-
+/* Bottoms SidePage */
 .bottoms-page {
    padding-top: 8px; /* Add some padding to the top of the side page for the title */
    position: fixed;
@@ -882,7 +843,6 @@ but works dosent overlap as much*/
    color: #333; /* Dark text for contrast */
    font-family: monospace;
 }
-
 
 .bottoms-title {
    all: unset; /* Removes default button styling */
@@ -906,25 +866,21 @@ but works dosent overlap as much*/
    max-width: 80%;
 }
 
-
 .bottoms-title:hover {
    transform: translateY(-10px);
    cursor: pointer;
    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
 }
 
-
 .bottoms-page.active {
    transform: translateX(0); /* Slide in to view */
 }
-
 
 .bottoms-page .text, .bottoms-page h2 {
    padding: 0 20px; /* Add padding to the sides */
    font-size: calc(0.5vw + 0.5rem); /* Combine viewport width and a minimum size */
    word-wrap: break-word; /* Ensure long words don't overflow */
 }
-
 
 .bottoms-items {
    display: grid;
@@ -935,14 +891,12 @@ but works dosent overlap as much*/
    overflow-y: auto; /* Allows scrolling if more items are added */
 }
 
-
 .bottoms-item, .bottoms-placeholder {
    width: 100%;
    height: auto;
    aspect-ratio: 1;
    justify-self: center;
 }
-
 
 .bottoms-item {
    position: relative;
@@ -957,101 +911,13 @@ but works dosent overlap as much*/
    z-index: 1;
 }
 
-
-.pant-item:hover {
+.bottoms-item:hover {
    z-index: 3;
 }
-
 
 .bottoms-item img {
    max-width: 80%;
    max-height: 80%;
-}
-
-
-.bottoms-info-card {
-   position: absolute;
-   bottom: -100px;  /* Adjust so it's just below the item */
-   left: 0;
-   width: 100%; /* Matches the width of the bottoms item */
-   background-color: white;
-   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-   opacity: 0;
-   visibility: hidden;
-   transition: all 0.3s ease;
-   z-index: 2; /* Ensure this is higher than the item's z-index */
-}
-
-
-.bottoms-item:hover .bottoms-info-card {
-   opacity: 1;
-   visibility: visible;
-   bottom: -140; /* Position it directly at the bottom of the item */
-}
-
-
-.bottoms-item-info {
-   margin: 10px 0;
-   font-size: 14px; /* Adjust size as needed */
-}
-
-
-.bottoms-item-info strong {
-   margin-right: 5px; /* Space between label and editable text */
-}
-
-
-.bottoms-item-name, .bottoms-item-brand {
-   display: inline-block; /* Makes span behave more like an input */
-   min-width: 50px; /* Ensures the editable area is sufficiently wide */
-   background: rgba(255, 255, 255, 0.5); /* Light background for editable areas */
-   border-bottom: 1px dashed #ccc; /* Underline style to indicate editability */
-}
-
-
-.bottoms-edit-btn {
-   padding: 5px 10px;
-   background-color: #4CAF50;
-   color: white;
-   border: none;
-   border-radius: 5px;
-   cursor: pointer;
-   margin-top: 10px;
-}
-
-
-.bottoms-edit-btn:hover {
-   background-color: #45a049;
-}
-
-
-.bottoms-placeholder {
-   background-color: #f0f0f0;
-   border-radius: 50%;
-}
-
-
-/* Combine hover effects for both hoodie items and placeholders */
-.bottoms-item:hover, .bottoms-placeholder:hover {
-   transform: translateY(-10px); /* Hover effect */
-   cursor: pointer; /* Change cursor to indicate clickable */
-   transition: transform 0.2s ease-in-out; /* Smooth hover effect */
-}
-
-
-.bottoms-page .bottoms-item {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   width: 100%; /* Adjust size as needed */
-   height: 100%; /* Adjust size as needed */
-   cursor: pointer;
-   transition: transform 0.2s ease-in-out; /* Smooth hover effect */
-}
-
-
-.bottoms-page .bottoms-item:hover {
-   transform: translateY(-10px); /* Hover effect */
 }
 
 
@@ -1163,90 +1029,6 @@ but works dosent overlap as much*/
 }
 
 
-.shoes-info-card {
-   position: absolute;
-   bottom: -100px;  /* Adjust so it's just below the item */
-   left: 0;
-   width: 100%; /* Matches the width of the shoes item */
-   background-color: white;
-   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-   opacity: 0;
-   visibility: hidden;
-   transition: all 0.3s ease;
-   z-index: 2; /* Ensure this is higher than the item's z-index */
-}
-
-
-.shoes-item:hover .shoes-info-card {
-   opacity: 1;
-   visibility: visible;
-   bottom: -140; /* Position it directly at the bottom of the item */
-}
-
-
-.shoes-item-info {
-   margin: 10px 0;
-   font-size: 14px; /* Adjust size as needed */
-}
-
-
-.shoes-item-info strong {
-   margin-right: 5px; /* Space between label and editable text */
-}
-
-
-.shoes-item-name, .shoes-item-brand {
-   display: inline-block; /* Makes span behave more like an input */
-   min-width: 50px; /* Ensures the editable area is sufficiently wide */
-   background: rgba(255, 255, 255, 0.5); /* Light background for editable areas */
-   border-bottom: 1px dashed #ccc; /* Underline style to indicate editability */
-}
-
-
-.shoes-edit-btn {
-   padding: 5px 10px;
-   background-color: #4CAF50;
-   color: white;
-   border: none;
-   border-radius: 5px;
-   cursor: pointer;
-   margin-top: 10px;
-}
-
-
-.shoes-edit-btn:hover {
-   background-color: #45a049;
-}
-
-
-.shoes-placeholder {
-   background-color: #f0f0f0;
-   border-radius: 50%;
-}
-
-
-/* Combine hover effects for both hoodie items and placeholders */
-.shoes-item:hover, .shoes-placeholder:hover {
-   transform: translateY(-10px); /* Hover effect */
-   cursor: pointer; /* Change cursor to indicate clickable */
-   transition: transform 0.2s ease-in-out; /* Smooth hover effect */
-}
-
-
-.shoes-page .shoes-item {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   width: 100%; /* Adjust size as needed */
-   height: 100%; /* Adjust size as needed */
-   cursor: pointer;
-   transition: transform 0.2s ease-in-out; /* Smooth hover effect */
-}
-
-
-.shoes-page .shoes-item:hover {
-   transform: translateY(-10px); /* Hover effect */
-}
 
 
 /* Saved Fits SidePage */
@@ -1556,43 +1338,162 @@ but works dosent overlap as much*/
    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
 }
 
-
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1000; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+   display: none; /* Hidden by default */
+   position: fixed; /* Stay in place */
+   z-index: 1000; /* Sit on top */
+   left: 0;
+   top: 0;
+   width: 100%; /* Full width */
+   height: 100%; /* Full height */
+   overflow: auto; /* Enable scroll if needed */
+   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+   display: flex; /* Flexbox for centering */
+   justify-content: center; /* Center horizontally */
+   align-items: center; /* Center vertically */
 }
 
+/* Modal Content */
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* Adjust percentage for vertical alignment */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+   background-color: #fefefe;
+   padding: 20px;
+   border: 1px solid #888;
+   width: 80%; /* Adjust width to be wider */
+   max-width: 1000px; /* Max width for responsiveness */
+   min-width: 600px; /* Min width for responsiveness */
+   height: auto; /* Auto height */
+   max-height: 80%; /* Max height for responsiveness */
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   overflow-y: auto; /* Allow vertical scrolling */
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow for depth */
+   border-radius: 10px; /* Rounded corners */
+   margin: auto;
+   margin-top: 50px;
 }
 
+/* Modal Body */
+.modal-body {
+   display: flex;
+   flex-direction: row; /* Row for side-by-side layout */
+   justify-content: space-around;
+   align-items: flex-start;
+   width: 100%;
+}
+
+/* Left Column */
+.modal-left-column {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 45%; /* Adjust width as necessary */
+}
+
+/* Modal Image */
+.modal-content img#modalImage {
+   width: 300px; /* Fixed width for consistency */
+   height: auto;
+   object-fit: contain; /* Ensures the image is completely visible */
+   margin: 10px; /* Space around the image */
+   border: 5px solid #444; /* Solid border for a classic look */
+   box-shadow: 0 0 15px rgba(0,0,0,0.5); /* Adds depth with a shadow */
+   border-radius: 10px; /* Rounded corners */
+}
+
+/* Modal Info Box */
+.modal-info-box {
+   background-color: #f9f9f9; /* Light background color */
+   border: 1px solid #ccc; /* Light border */
+   border-radius: 8px; /* Rounded corners */
+   padding: 10px 20px; /* Padding inside the box */
+   margin: 20px 0; /* Margin outside the box */
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+   font-family: monospace; /* Monospace font for the text */
+   font-size: 1rem; /* Font size */
+   width: 100%; /* Width of the box */
+   text-align: left; /* Align text to the left */
+   margin:auto;
+}
+
+.modal-info-box strong {
+   font-weight: bold; /* Bold font for labels */
+}
+
+.modal-info-box span {
+   margin-left: 5px; /* Space between label and value */
+}
+
+/* Right Column */
+.modal-right-column {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 55%; /* Adjust width as necessary */
+}
+
+/* Outfit Preview */
+.outfit-preview {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 10px; /* Space between images */
+   width: 100%; /* Full width */
+}
+
+/* Outfit Item */
+.outfit-item {
+   width: 90px; /* Smaller than the main image */
+   height: auto;
+   object-fit: contain;
+   border: 2px solid #444; /* Consistent with the modal image */
+   border-radius: 8px; /* Slightly rounded corners */
+   box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* Close Button */
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
+   color: #aaa;
+   position: absolute;
+   top: 8px;
+   right: 16px;
+   font-size: 28px;
+   font-weight: bold;
+   cursor: pointer;
 }
 
 .close:hover,
 .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+   color: black;
+   text-decoration: none;
+   cursor: pointer;
 }
 
-.buttonContainer, .selected {
-    background-color: #e63946;
- }
+/* Modal Description */
+#modalDescription {
+   text-align: center;
+   padding-top: 10px;
+}
+
+#modalName, #modalBrand {
+   margin: 5px 0;
+}
+
+/* Suggested Outfit Button */
+#suggestedOutfitButton {
+   padding: 10px 20px;
+   font-size: 1rem;
+   background-color: #ff4181;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   margin-top: 20px;
+}
+
+#suggestedOutfitButton:hover {
+   background-color: #e63946;
+   transform: translateY(-10px); /* Hover effect */
+   transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}

@@ -14,10 +14,59 @@
    </head>
 <body>
 
+<!-- Cover Page -->
+<div id="coverPage" class="cover-page">
+    <div class="cover-content">
+        <h1>Welcome to PerfectFit</h1>
+        <p>Discover fashion that fits your style and comfort.</p>
+        <button onclick="startApp()">Get Started</button>
+    </div>
+ </div>
+ 
+ 
+ <!-- Cover Page Javascript-->
+ <script>
+    function startApp() {
+        document.getElementById('coverPage').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+    }
+ </script>
+ 
+ 
+ <!-- Cycles Background images-->
+ <script>
+    // Array of background images
+    const backgrounds = [
+        'defaults/backgrounds/background1.png',
+        'defaults/backgrounds/background2.png',
+        'defaults/backgrounds/background3.png',
+        'defaults/backgrounds/background4.png',
+        'defaults/backgrounds/background5.png'
+    ];
+    let currentBackgroundIndex = 0; // Initial background index
+ 
+ 
+    // Function to cycle through backgrounds
+    function changeBackground() {
+        const coverPage = document.querySelector('.cover-page');
+        coverPage.style.backgroundImage = `url('${backgrounds[currentBackgroundIndex]}')`;
+        currentBackgroundIndex = (currentBackgroundIndex + 1) % backgrounds.length; // Increment index, loop back to 0
+    }
+ 
+ 
+    // Set interval to change background every 2000 milliseconds (2 seconds)
+    setInterval(changeBackground, 4000);
+ 
+ 
+    // Initialize first background
+    changeBackground();
+ </script>
+
 
 <!--Sets default sources for images-->
 
-
+<!-- Main Page Content -->
+<div id="mainContent" class="main-content" style="display:none;">
 <div class="container">
    <p class="text">PerfectFit</p>
 </div>
@@ -28,13 +77,12 @@
 </div>
 
 
-<div class="hoodie">
-   <img src="defaults/tops/top1.png" id="tops" height="250"/>
+<div class="top">
+    <img src="defaults/tops/top1.png" id="tops" height="250"/>
 </div>
 
-
-<div class="pant">
-   <img src="defaults/bottoms/bottoms1.png" id="bottoms" height="350">
+<div class="bottom">
+    <img src="defaults/bottoms/bottoms1.png" id="bottoms" height="350">
 </div>
 
 
@@ -56,34 +104,22 @@
 </div>
 
 
-<!--HOODIE BUTTONS-->
-
-
-<div class="hoodieNextButton">
-   <button onclick="nextButtonClick('tops')" style="font-size: 25px; background-color: white;">></button>
+<!-- Top Buttons -->
+<div class="topNextButton">
+    <button onclick="nextButtonClick('tops')" style="font-size: 25px; background-color: white;">></button>
+</div>
+<div class="topPrevButton">
+    <button onclick="prevButtonClick('tops')" style="font-size: 25px; background-color: white;"><</button>
 </div>
 
-
-
-
-<div class="hoodiePrevButton">
-   <button onclick="prevButtonClick('tops')" style="font-size: 25px; background-color: white;"><</button>
+<!-- Bottom Buttons -->
+<div class="bottomNextButton">
+    <button onclick="nextButtonClick('bottoms')" style="font-size: 25px; background-color: white;">></button>
+</div>
+<div class="bottomPrevButton">
+    <button onclick="prevButtonClick('bottoms')" style="font-size: 25px; background-color: white;"><</button>
 </div>
 
-
-
-
-<!--bottoms BUTTONS-->
-
-
-<div class="bottomsNextButton">
-   <button onclick="nextButtonClick('bottoms')" style="font-size: 25px; background-color: white;">></button>
-</div>
-
-
-<div class="bottomsPrevButton">
-   <button onclick="prevButtonClick('bottoms')" style="font-size: 25px; background-color: white;"><</button>
-</div>
 
 
 <!--SHOES BUTTONS-->
@@ -107,75 +143,64 @@
 
 
 <!--Javascript functions to change the source of picture of the garment-->
+<!-- Javascript functions to change the source of picture of the garment -->
 <script type="text/javascript">
+    let headwear_index = 0;
+    let top_index = 0;
+    let bottom_index = 0;
+    let shoes_index = 0;
 
+    const headwear = ['defaults/headwear/headwear1.png', 'defaults/headwear/headwear2.png', 'defaults/headwear/headwear3.png', 'defaults/headwear/headwear4.png'];
+    const tops = ['defaults/tops/top1.png', 'defaults/tops/top2.png', 'defaults/tops/top3.png', 'defaults/tops/top4.png', 'defaults/tops/top6.png'];
+    const bottoms = ['defaults/bottoms/bottoms1.png', 'defaults/bottoms/bottoms2.png', 'defaults/bottoms/bottoms3.png', 'defaults/bottoms/bottoms4.png', 'defaults/bottoms/bottoms5.png', 'defaults/bottoms/bottoms6.png'];
+    const shoes = ['defaults/shoes/shoes1.png', 'defaults/shoes/shoes2.png', 'defaults/shoes/shoes3.png'];
 
-   let headwear_index = 0;
-   let hoodie_index = 0;
-   let bottoms_index = 0;
-   let shoes_index = 0;
+    // Function to move to next item in list
+    function nextButtonClick(id) {
+        if (id == 'headwear') {
+            headwear_index = (headwear_index + 1) % headwear.length;
+            document.getElementById(id).src = headwear[headwear_index];
+        }
 
+        if (id == 'tops') {
+            top_index = (top_index + 1) % tops.length;
+            document.getElementById(id).src = tops[top_index];
+        }
 
-   const headwear = ['defaults/headwear/headwear1.png', 'defaults/headwear/headwear2.png', 'defaults/headwear/headwear3.png','defaults/headwear/headwear4.png'];
-   const tops = ['defaults/tops/top1.png', 'defaults/tops/top2.png', 'defaults/tops/top3.png', 'defaults/tops/top4.png','defaults/tops/top6.png' ];
-   const bottoms = ['defaults/bottoms/bottoms1.png', 'defaults/bottoms/bottoms2.png', 'defaults/bottoms/bottoms3.png','defaults/bottoms/bottoms4.png', 'defaults/bottoms/bottoms5.png', 'defaults/bottoms/bottoms6.png'];
-   const shoes = ['defaults/shoes/shoes1.png', 'defaults/shoes/shoes2.png', 'defaults/shoes/shoes3.png'];
+        if (id == 'bottoms') {
+            bottom_index = (bottom_index + 1) % bottoms.length;
+            document.getElementById(id).src = bottoms[bottom_index];
+        }
 
+        if (id == 'shoes') {
+            shoes_index = (shoes_index + 1) % shoes.length;
+            document.getElementById(id).src = shoes[shoes_index];
+        }
+    }
 
-   //Function to move to next item in list
-   function nextButtonClick(id) {
-       if (id == 'headwear') {
-       headwear_index = (headwear_index + 1) % headwear.length; // Loop back to start
-       document.getElementById(id).src = headwear[headwear_index];
-       }
+    // Function to move to previous item in list
+    function prevButtonClick(id) {
+        if (id == 'headwear') {
+            headwear_index = (headwear_index - 1 + headwear.length) % headwear.length;
+            document.getElementById(id).src = headwear[headwear_index];
+        }
 
+        if (id == 'tops') {
+            top_index = (top_index - 1 + tops.length) % tops.length;
+            document.getElementById(id).src = tops[top_index];
+        }
 
-       if (id == 'tops') {
-       hoodie_index = (hoodie_index + 1) % tops.length; // Loop back to start
-       document.getElementById(id).src = tops[hoodie_index];
-       }
+        if (id == 'bottoms') {
+            bottom_index = (bottom_index - 1 + bottoms.length) % bottoms.length;
+            document.getElementById(id).src = bottoms[bottom_index];
+        }
 
-
-       if (id == 'bottoms') {
-       bottoms_index = (bottoms_index + 1) % bottoms.length; // Loop back to start
-       document.getElementById(id).src = bottoms[bottoms_index];
-       }
-
-
-       if (id == 'shoes') {
-       shoes_index = (shoes_index + 1) % shoes.length; // Loop back to start
-       document.getElementById(id).src = shoes[shoes_index];
-       }
-   }
-
-
-   //Function to move to previous item in list
-   function prevButtonClick(id) {
-       if (id == 'headwear') {
-       headwear_index = (headwear_index - 1 + headwear.length) % headwear.length; // Loop back to end
-       document.getElementById(id).src = headwear[headwear_index];
-       }
-
-
-       if (id == 'tops') {
-       hoodie_index = (hoodie_index - 1 + tops.length) % tops.length; // Loop back to end
-       document.getElementById(id).src = tops[hoodie_index];
-       }
-
-
-       if (id == 'bottoms') {
-       bottoms_index = (bottoms_index - 1 + bottoms.length) % bottoms.length; // Loop back to end
-       document.getElementById(id).src = bottoms[bottoms_index];
-       }
-
-
-       if (id == 'shoes') {
-       shoes_index = (shoes_index - 1 + shoes.length) % shoes.length; // Loop back to end
-       document.getElementById(id).src = shoes[shoes_index];
-       }
-   }
+        if (id == 'shoes') {
+            shoes_index = (shoes_index - 1 + shoes.length) % shoes.length;
+            document.getElementById(id).src = shoes[shoes_index];
+        }
+    }
 </script>
-
 
 <div id="display"></div>
 
@@ -356,10 +381,10 @@
   
   
    const headwear = [
-       { src: 'defaults/headwear/headwear1.png', name: 'Black Beanie', brand: 'Uniqlo' },
-       { src: 'defaults/headwear/headwear2.png', name: 'Arc Beanie', brand: 'Arcteryx' },
-       { src: 'defaults/headwear/headwear3.png', name: 'NY Hat', brand: 'Lids' },
-       { src: 'defaults/headwear/headwear4.png', name: 'Black Arc', brand: 'Arcteryx' }
+       { src: 'defaults/headwear/headwear1.png', name: 'Black Beanie', brand: 'Uniqlo', category: 'headwear' },
+       { src: 'defaults/headwear/headwear2.png', name: 'Arc Beanie', brand: 'Arcteryx' , category: 'headwear'},
+       { src: 'defaults/headwear/headwear3.png', name: 'NY Hat', brand: 'Lids' , category: 'headwear'},
+       { src: 'defaults/headwear/headwear4.png', name: 'Black Arc', brand: 'Arcteryx' , category: 'headwear'}
    ];
   
   
@@ -435,214 +460,189 @@
 </script>
 
 
-<!-- tops Page Section, initially hidden -->
+<!-- Tops Page Section, initially hidden -->
 <div id="topsPage" class="tops-page">
-   <!-- Your tops content here -->
-   <button id="closetopsPage" class="tops-title">tops</button>
-   <div id="topsItems" class="tops-items"></div>
+    <!-- Your tops content here -->
+    <button id="closeTopsPage" class="tops-title">tops</button>
+    <div id="topsItems" class="tops-items"></div>
 </div>
 
-
 <script>
-   document.addEventListener('DOMContentLoaded', function() {
-   const topsIcon = document.getElementById('topsIcon');
-   const topsPage = document.getElementById('topsPage');
-   const topsItemsContainer = document.getElementById('topsItems');
-   const topsDisplay = document.getElementById('tops'); // Main display area for tops
-   const closetopsPageBtn = document.getElementById('closetopsPage'); // Close button
+    document.addEventListener('DOMContentLoaded', function() {
+        const topsIcon = document.getElementById('topsIcon');
+        const topsPage = document.getElementById('topsPage');
+        const topsItemsContainer = document.getElementById('topsItems');
+        const topsDisplay = document.getElementById('tops'); // Main display area for tops
+        const closeTopsPageBtn = document.getElementById('closeTopsPage'); // Close button
 
+        const tops = [
+            { src: 'defaults/tops/top1.png', name: 'Blue Hoodie', brand: 'Uniqlo', category: 'tops' },
+            { src: 'defaults/tops/top2.png', name: 'Green Hoodie', brand: 'Urban', category: 'tops' },
+            { src: 'defaults/tops/top3.png', name: 'Grey', brand: 'Pacsun', category: 'tops' },
+            { src: 'defaults/tops/top4.png', name: 'Sloodie', brand: 'Iongaf', category: 'tops' },
+            { src: 'defaults/tops/top6.png', name: 'Longsleeve', brand: 'Kapital', category: 'tops' }
+        ];
 
-   const tops = [
-       { src: 'defaults/tops/top1.png', name: 'Blue Hoodie', brand: 'Uniqlo' },
-       { src: 'defaults/tops/top2.png', name: 'Green Hoodie', brand: 'Urban' },
-       { src: 'defaults/tops/top3.png', name: 'Grey', brand: 'Pacsun' },
-       { src: 'defaults/tops/top4.png', name: 'Sloodie', brand: 'Iongaf' },
-       { src: 'defaults/tops/top6.png', name: 'Longsleeve', brand: 'Kapital' }
-   ];
+        function populateTopsItems() {
+            tops.forEach(item => {
+                const itemContainer = document.createElement('div');
+                itemContainer.classList.add('tops-item');
+                const img = document.createElement('img');
+                img.src = item.src;
+                img.alt = item.name;
 
+                // Info card with editable fields
+                const infoCard = document.createElement('div');
+                infoCard.className = 'tops-info-card';
+                infoCard.innerHTML = `
+                    <p class="tops-item-info"><strong>Name:</strong> <span class="tops-item-name" contentEditable="false">${item.name}</span></p>
+                    <p class="tops-item-info"><strong>Brand:</strong> <span class="tops-item-brand" contentEditable="false">${item.brand}</span></p>
+                    <button class="tops-edit-btn">Edit</button>
+                    <button onclick='openDetailsModal(${JSON.stringify(item)})'>Learn More</button>
+                `;
 
-   function populateHoodieItems() {
-       tops.forEach(item => {
-           const itemContainer = document.createElement('div');
-           itemContainer.classList.add('tops-item');
-           const img = document.createElement('img');
-           img.src = item.src;
-           img.alt = item.name;
+                // Click event to update the central display when a top image is clicked
+                img.onclick = () => {
+                    topsDisplay.src = img.src;
+                };
 
+                itemContainer.appendChild(img);
+                itemContainer.appendChild(infoCard);
+                topsItemsContainer.appendChild(itemContainer);
 
-           // Info card with editable fields
-           const infoCard = document.createElement('div');
-           infoCard.className = 'tops-info-card';
-           infoCard.innerHTML = `
-               <p class="tops-item-info"><strong>Name:</strong> <span class="tops-item-name" contentEditable="false">${item.name}</span></p>
-               <p class="tops-item-info"><strong>Brand:</strong> <span class="tops-item-brand" contentEditable="false">${item.brand}</span></p>
-               <button class="tops-edit-btn">Edit</button>
-		<button onclick='openDetailsModal(${JSON.stringify(item)})'>Learn More</button>
+                // Event for edit/save button
+                infoCard.querySelector('.tops-edit-btn').addEventListener('click', function() {
+                    const name = infoCard.querySelector('.tops-item-name');
+                    const brand = infoCard.querySelector('.tops-item-brand');
+                    if (this.innerText === 'Edit') {
+                        name.contentEditable = "true";
+                        brand.contentEditable = "true";
+                        this.innerText = 'Save';
+                        name.focus();
+                    } else {
+                        name.contentEditable = "false";
+                        brand.contentEditable = "false";
+                        this.innerText = 'Edit';
+                    }
+                });
+            });
 
+            // Fill remaining grid slots with placeholders if necessary
+            const itemsCount = tops.length;
+            const totalSlots = 15; // Assuming a 5x3 grid
+            const remainingSlots = totalSlots - itemsCount;
+            for (let i = 0; i < remainingSlots; i++) {
+                const placeholder = document.createElement('div');
+                placeholder.classList.add('tops-placeholder');
+                topsItemsContainer.appendChild(placeholder);
+            }
+        }
 
-           `;
+        topsIcon.addEventListener('click', function(e) {
+            e.preventDefault();
+            topsPage.classList.toggle('active');
+            if (!topsItemsContainer.hasChildNodes()) {
+                populateTopsItems();
+            }
+        });
 
-
-           // Click event to update the central display when a headwear image is clicked
-           img.onclick = () => {
-               topsDisplay.src = img.src;
-           };
-
-
-           itemContainer.appendChild(img);
-           itemContainer.appendChild(infoCard);
-           topsItemsContainer.appendChild(itemContainer);
-
-
-           // Event for edit/save button
-           infoCard.querySelector('.tops-edit-btn').addEventListener('click', function() {
-               const name = infoCard.querySelector('.tops-item-name');
-               const brand = infoCard.querySelector('.tops-item-brand');
-               if (this.innerText === 'Edit') {
-                   name.contentEditable = "true";
-                   brand.contentEditable = "true";
-                   this.innerText = 'Save';
-                   name.focus();
-               } else {
-                   name.contentEditable = "false";
-                   brand.contentEditable = "false";
-                   this.innerText = 'Edit';
-               }
-           });
-       });
-
-
-       // Fill remaining grid slots with placeholders if necessary
-       const itemsCount = tops.length;
-       const totalSlots = 15; // Assuming a 5x3 grid
-       const remainingSlots = totalSlots - itemsCount;
-       for (let i = 0; i < remainingSlots; i++) {
-           const placeholder = document.createElement('div');
-           placeholder.classList.add('headwear-placeholder');
-           topsItemsContainer.appendChild(placeholder);
-       }
-   }
-
-
-   topsIcon.addEventListener('click', function(e) {
-       e.preventDefault();
-       topsPage.classList.toggle('active');
-       if (!topsItemsContainer.hasChildNodes()) {
-           populateHoodieItems();
-       }
-   });
-
-
-   closetopsPageBtn.addEventListener('click', function() {
-       topsPage.classList.remove('active');
-   });
-   });
+        closeTopsPageBtn.addEventListener('click', function() {
+            topsPage.classList.remove('active');
+        });
+    });
 </script>
 
-
-
-
-<!-- bottoms Page Section, initially hidden -->
+<!-- Bottoms Page Section, initially hidden -->
 <div id="bottomsPage" class="bottoms-page">
-   <!-- Your bottoms content here -->
-   <button id="closebottomsPage" class="bottoms-title">bottoms</button>
-   <div id="bottomsItems" class="bottoms-items"></div>
+    <!-- Your bottoms content here -->
+    <button id="closeBottomsPage" class="bottoms-title">bottoms</button>
+    <div id="bottomsItems" class="bottoms-items"></div>
 </div>
+
 <script>
-   document.addEventListener('DOMContentLoaded', function() {
-   const bottomsIcon = document.getElementById('bottomsIcon');
-   const bottomsPage = document.getElementById('bottomsPage');
-   const bottomsItemsContainer = document.getElementById('bottomsItems');
-   const bottomsDisplay = document.getElementById('bottoms'); // Main display area for bottoms
-   const closebottomsPageBtn = document.getElementById('closebottomsPage'); // Close button
+    document.addEventListener('DOMContentLoaded', function() {
+        const bottomsIcon = document.getElementById('bottomsIcon');
+        const bottomsPage = document.getElementById('bottomsPage');
+        const bottomsItemsContainer = document.getElementById('bottomsItems');
+        const bottomsDisplay = document.getElementById('bottoms'); // Main display area for bottoms
+        const closeBottomsPageBtn = document.getElementById('closeBottomsPage'); // Close button
 
+        const bottoms = [
+            { src: 'defaults/bottoms/bottoms1.png', name: 'Blue', brand: 'Jeans', category: 'bottoms' },
+            { src: 'defaults/bottoms/bottoms2.png', name: 'White', brand: 'bottoms', category: 'bottoms' },
+            { src: 'defaults/bottoms/bottoms3.png', name: 'Brown', brand: 'Sweats', category: 'bottoms' },
+            { src: 'defaults/bottoms/bottoms4.png', name: 'Baggy Pants', brand: 'Bershka', category: 'bottoms' },
+            { src: 'defaults/bottoms/bottoms5.png', name: 'Grey', brand: 'Sweats', category: 'bottoms' },
+            { src: 'defaults/bottoms/bottoms6.png', name: 'Baggy Pants', brand: 'Bershka', category: 'bottoms' }
+        ];
 
-   const bottoms = [
-       { src: 'defaults/bottoms/bottoms1.png', name: 'Blue', brand: 'Jeans' },
-       { src: 'defaults/bottoms/bottoms2.png', name: 'White', brand: 'bottoms' },
-       { src: 'defaults/bottoms/bottoms3.png', name: 'Brown', brand: 'Sweats' },
-       { src: 'defaults/bottoms/bottoms4.png', name: 'Baggy Pants', brand: 'Bershka' },
-       { src: 'defaults/bottoms/bottoms5.png', name: 'Grey', brand: 'Sweats' },
-       { src: 'defaults/bottoms/bottoms6.png', name: 'Baggy Pants', brand: 'Bershka' }
-   ];
+        function populateBottomsItems() {
+            bottoms.forEach(item => {
+                const itemContainer = document.createElement('div');
+                itemContainer.classList.add('bottoms-item');
+                const img = document.createElement('img');
+                img.src = item.src;
+                img.alt = item.name;
 
+                // Info card with editable fields
+                const infoCard = document.createElement('div');
+                infoCard.className = 'bottoms-info-card';
+                infoCard.innerHTML = `
+                    <p class="bottoms-item-info"><strong>Name:</strong> <span class="bottoms-item-name" contentEditable="false">${item.name}</span></p>
+                    <p class="bottoms-item-info"><strong>Brand:</strong> <span class="bottoms-item-brand" contentEditable="false">${item.brand}</span></p>
+                    <button class="bottoms-edit-btn">Edit</button>
+                    <button onclick='openDetailsModal(${JSON.stringify(item)})'>Learn More</button>
+                `;
 
-   function populatebottomsItems() {
-       bottoms.forEach(item => {
-           const itemContainer = document.createElement('div');
-           itemContainer.classList.add('bottoms-item');
-           const img = document.createElement('img');
-           img.src = item.src;
-           img.alt = item.name;
+                // Click event to update the central display when a bottoms image is clicked
+                img.onclick = () => {
+                    bottomsDisplay.src = img.src;
+                };
 
+                itemContainer.appendChild(img);
+                itemContainer.appendChild(infoCard);
+                bottomsItemsContainer.appendChild(itemContainer);
 
-           // Info card with editable fields
-           const infoCard = document.createElement('div');
-           infoCard.className = 'bottoms-info-card';
-           infoCard.innerHTML = `
-               <p class="bottoms-item-info"><strong>Name:</strong> <span class="bottoms-item-name" contentEditable="false">${item.name}</span></p>
-               <p class="bottoms-item-info"><strong>Brand:</strong> <span class="bottoms-item-brand" contentEditable="false">${item.brand}</span></p>
-               <button class="bottoms-edit-btn">Edit</button>
-		<button onclick='openDetailsModal(${JSON.stringify(item)})'>Learn More</button>
+                // Event for edit/save button
+                infoCard.querySelector('.bottoms-edit-btn').addEventListener('click', function() {
+                    const name = infoCard.querySelector('.bottoms-item-name');
+                    const brand = infoCard.querySelector('.bottoms-item-brand');
+                    if (this.innerText === 'Edit') {
+                        name.contentEditable = "true";
+                        brand.contentEditable = "true";
+                        this.innerText = 'Save';
+                        name.focus();
+                    } else {
+                        name.contentEditable = "false";
+                        brand.contentEditable = "false";
+                        this.innerText = 'Edit';
+                    }
+                });
+            });
 
+            // Fill remaining grid slots with placeholders if necessary
+            const itemsCount = bottoms.length;
+            const totalSlots = 15; // Assuming a 5x3 grid
+            const remainingSlots = totalSlots - itemsCount;
+            for (let i = 0; i < remainingSlots; i++) {
+                const placeholder = document.createElement('div');
+                placeholder.classList.add('bottoms-placeholder');
+                bottomsItemsContainer.appendChild(placeholder);
+            }
+        }
 
-           `;
+        bottomsIcon.addEventListener('click', function(e) {
+            e.preventDefault();
+            bottomsPage.classList.toggle('active');
+            if (!bottomsItemsContainer.hasChildNodes()) {
+                populateBottomsItems();
+            }
+        });
 
-
-           // Click event to update the central display when a bottoms image is clicked
-           img.onclick = () => {
-               bottomsDisplay.src = img.src;
-           };
-
-
-           itemContainer.appendChild(img);
-           itemContainer.appendChild(infoCard);
-           bottomsItemsContainer.appendChild(itemContainer);
-
-
-           // Event for edit/save button
-           infoCard.querySelector('.bottoms-edit-btn').addEventListener('click', function() {
-               const name = infoCard.querySelector('.bottoms-item-name');
-               const brand = infoCard.querySelector('.bottoms-item-brand');
-               if (this.innerText === 'Edit') {
-                   name.contentEditable = "true";
-                   brand.contentEditable = "true";
-                   this.innerText = 'Save';
-                   name.focus();
-               } else {
-                   name.contentEditable = "false";
-                   brand.contentEditable = "false";
-                   this.innerText = 'Edit';
-               }
-           });
-       });
-
-
-       // Fill remaining grid slots with placeholders if necessary
-       const itemsCount = bottoms.length;
-       const totalSlots = 15; // Assuming a 5x3 grid
-       const remainingSlots = totalSlots - itemsCount;
-       for (let i = 0; i < remainingSlots; i++) {
-           const placeholder = document.createElement('div');
-           placeholder.classList.add('bottoms-placeholder');
-           bottomsItemsContainer.appendChild(placeholder);
-       }
-   }
-
-
-   bottomsIcon.addEventListener('click', function(e) {
-       e.preventDefault();
-       bottomsPage.classList.toggle('active');
-       if (!bottomsItemsContainer.hasChildNodes()) {
-           populatebottomsItems();
-       }
-   });
-
-
-   closebottomsPageBtn.addEventListener('click', function() {
-       bottomsPage.classList.remove('active');
-   });
-   });
+        closeBottomsPageBtn.addEventListener('click', function() {
+            bottomsPage.classList.remove('active');
+        });
+    });
 </script>
 
 
@@ -666,9 +666,9 @@
 
 
    const shoes = [
-       { src: 'defaults/shoes/shoes1.png', name: 'Sambas', brand: 'Adidas' },
-       { src: 'defaults/shoes/shoes2.png', name: '550s', brand: 'New Balance' },
-       { src: 'defaults/shoes/shoes3.png', name: 'Slippers', brand: 'Uggs' },
+       { src: 'defaults/shoes/shoes1.png', name: 'Sambas', brand: 'Adidas', category: 'shoes' },
+       { src: 'defaults/shoes/shoes2.png', name: '550s', brand: 'New Balance', category: 'shoes' },
+       { src: 'defaults/shoes/shoes3.png', name: 'Slippers', brand: 'Uggs', category: 'shoes' }
    ];
 
 
@@ -1071,45 +1071,212 @@
 </script>
 
 
-
-
 <!-- Universal Details Modal -->
 <div id="detailsModal" class="modal">
-   <div class="modal-content">
-       <span class="close">&times;</span>
-       <img id="modalImage" src="" alt="Item Image">
-       <div id="modalDescription">
-           <h3 id="modalName"></h3>
-           <p id="modalBrand"></p>
-       </div>
-   </div>
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-body">
+            <div class="modal-left-column">
+                <img id="modalImage" src="" alt="Item Image">
+                <div class="modal-info-box">
+                    <p><strong>Name:</strong> <span id="modalName"></span></p>
+                    <p><strong>Brand:</strong> <span id="modalBrand"></span></p>
+                    <div><strong>Category:</strong> <span id="modalCategory"></span></div>
+                </div>
+            </div>
+            <div class="outfit-preview">
+                <!-- Outfit components that dynamically change except the category of the modal item -->
+                <img id="modalHeadwear" src="" alt="Headwear" class="outfit-item">
+                <img id="modalTop" src="" alt="Top" class="outfit-item">
+                <img id="modalBottom" src="" alt="Bottom" class="outfit-item">
+                <img id="modalShoes" src="" alt="Shoes" class="outfit-item">
+            </div>
+        </div>
+        <div id="modalDescription">
+            <h3 id="modalName"></h3>
+            <p id="modalBrand"></p>
+            <p id="modalCategory"></p>
+        </div>
+        <button id="suggestedOutfitButton" onclick="generateSuggestedOutfitModal()">Generate Suggested Outfit</button>
+    </div>
 </div>
-
-
 <script>
-   function openDetailsModal(item) {
-   const modal = document.getElementById('detailsModal');
-   document.getElementById('modalImage').src = item.src;
-   document.getElementById('modalName').textContent = item.name;
-   document.getElementById('modalBrand').textContent = item.brand;
+    // Function to open the details modal with item details
+    function openDetailsModal(item) {
+        console.log("Item received:", item);
 
+        // Debugging the category
+        console.log("Category:", item.category);
 
-   modal.style.display = "block";
-}
-document.querySelectorAll('.close').forEach(closeButton => {
-   closeButton.onclick = function() {
-       this.parentElement.parentElement.style.display = "none";
-   }
-});
+        const headwear = [
+            { src: 'defaults/headwear/headwear1.png', name: 'Black Beanie', brand: 'Uniqlo', category: 'headwear' },
+            { src: 'defaults/headwear/headwear2.png', name: 'Arc Beanie', brand: 'Arcteryx', category: 'headwear' },
+            { src: 'defaults/headwear/headwear3.png', name: 'NY Hat', brand: 'Lids', category: 'headwear' },
+            { src: 'defaults/headwear/headwear4.png', name: 'Black Arc', brand: 'Arcteryx', category: 'headwear' }
+        ];
 
+        const tops = [
+            { src: 'defaults/tops/top1.png', name: 'Blue Hoodie', brand: 'Uniqlo', category: 'top' },
+            { src: 'defaults/tops/top2.png', name: 'Green Hoodie', brand: 'Urban', category: 'top' },
+            { src: 'defaults/tops/top3.png', name: 'Grey', brand: 'Pacsun', category: 'top' },
+            { src: 'defaults/tops/top4.png', name: 'Sloodie', brand: 'Iongaf', category: 'top' },
+            { src: 'defaults/tops/top6.png', name: 'Longsleeve', brand: 'Kapital', category: 'top' }
+        ];
 
-window.onclick = function(event) {
-   if (event.target.className === 'modal') {
-       event.target.style.display = "none";
-   }
-}
+        const bottoms = [
+            { src: 'defaults/bottoms/bottoms1.png', name: 'Blue', brand: 'Jeans', category: 'bottom' },
+            { src: 'defaults/bottoms/bottoms2.png', name: 'White', brand: 'Bottoms', category: 'bottom' },
+            { src: 'defaults/bottoms/bottoms3.png', name: 'Brown', brand: 'Sweats', category: 'bottom' },
+            { src: 'defaults/bottoms/bottoms4.png', name: 'Baggy Pants', brand: 'Bershka', category: 'bottom' },
+            { src: 'defaults/bottoms/bottoms5.png', name: 'Grey', brand: 'Sweats', category: 'bottom' },
+            { src: 'defaults/bottoms/bottoms6.png', name: 'Baggy Pants', brand: 'Bershka', category: 'bottom' }
+        ];
+
+        const shoes = [
+            { src: 'defaults/shoes/shoes1.png', name: 'Sambas', brand: 'Adidas', category: 'shoes' },
+            { src: 'defaults/shoes/shoes2.png', name: '550s', brand: 'New Balance', category: 'shoes' },
+            { src: 'defaults/shoes/shoes3.png', name: 'Slippers', brand: 'Uggs', category: 'shoes' }
+        ];
+
+        const modal = document.getElementById('detailsModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalHeadwear = document.getElementById('modalHeadwear');
+        const modalTop = document.getElementById('modalTop');
+        const modalBottom = document.getElementById('modalBottom');
+        const modalShoes = document.getElementById('modalShoes');
+
+        // Setting the clicked item as the modal image
+        modalImage.src = item.src;
+        document.getElementById('modalName').textContent = item.name;
+        document.getElementById('modalBrand').textContent = item.brand;
+        document.getElementById('modalCategory').textContent = item.category; // Set the category
+
+        // Function to add lock icon
+        function addLockIcon(element) {
+            // Remove existing lock icons
+            document.querySelectorAll('.lock-icon').forEach(lock => lock.remove());
+
+            const lockIcon = document.createElement("span");
+            lockIcon.textContent = "\uD83D\uDD12"; // Unicode lock icon
+            lockIcon.className = 'lock-icon';
+            lockIcon.style.color = "red";
+            lockIcon.style.fontSize = "1.5rem";
+            lockIcon.style.position = "absolute";
+            lockIcon.style.top = "-10px";
+            lockIcon.style.right = "-10px";
+            lockIcon.style.zIndex = "10";
+
+            const container = document.createElement("div");
+            container.style.position = "relative";
+            container.style.display = "inline-block";
+
+            container.appendChild(element.cloneNode(true));
+            container.appendChild(lockIcon);
+            element.parentNode.replaceChild(container, element);
+        }
+
+        // Depending on the category of the item, set the image sources and add lock icon
+        switch (item.category) {
+            case 'headwear':
+                modalHeadwear.src = item.src;  // Keep headwear same
+                addLockIcon(modalHeadwear);
+                modalTop.src = tops[0].src;
+                modalBottom.src = bottoms[0].src;
+                modalShoes.src = shoes[0].src;
+                break;
+            case 'tops':
+                modalHeadwear.src = headwear[0].src;
+                modalTop.src = item.src;  // Keep top same
+                addLockIcon(modalTop);
+                modalBottom.src = bottoms[0].src;
+                modalShoes.src = shoes[0].src;
+                break;
+            case 'bottoms':
+                modalHeadwear.src = headwear[0].src;
+                modalTop.src = tops[0].src;
+                modalBottom.src = item.src;  // Keep bottom same
+                addLockIcon(modalBottom);
+                modalShoes.src = shoes[0].src;
+                break;
+            case 'shoes':
+                modalHeadwear.src = headwear[0].src;
+                modalTop.src = tops[0].src;
+                modalBottom.src = bottoms[0].src;
+                modalShoes.src = item.src;  // Keep shoes same
+                addLockIcon(modalShoes);
+                break;
+            default:
+                console.error('Invalid category:', item.category);
+                break;
+        }
+
+        modal.style.display = "block";
+    }
+
+    // Function to generate a suggested outfit based on the current modal item
+    function generateSuggestedOutfitModal() {
+        // Arrays of available outfit pieces
+        const headwearOptions = ['defaults/headwear/headwear1.png', 'defaults/headwear/headwear2.png', 'defaults/headwear/headwear3.png', 'defaults/headwear/headwear4.png'];
+        const topsOptions = ['defaults/tops/top1.png', 'defaults/tops/top2.png', 'defaults/tops/top3.png', 'defaults/tops/top4.png', 'defaults/tops/top6.png'];
+        const bottomsOptions = ['defaults/bottoms/bottoms1.png', 'defaults/bottoms/bottoms2.png', 'defaults/bottoms/bottoms3.png', 'defaults/bottoms/bottoms4.png', 'defaults/bottoms/bottoms5.png', 'defaults/bottoms/bottoms6.png'];
+        const shoesOptions = ['defaults/shoes/shoes1.png', 'defaults/shoes/shoes2.png', 'defaults/shoes/shoes3.png'];
+
+        // Get the current displayed items in the modal
+        const currentModalHeadwear = document.getElementById('modalHeadwear').src;
+        const currentModalTop = document.getElementById('modalTop').src;
+        const currentModalBottom = document.getElementById('modalBottom').src;
+        const currentModalShoes = document.getElementById('modalShoes').src;
+
+        // Function to get a random item from an array
+        function getRandomItem(arr, currentItem) {
+            let randomItem;
+            do {
+                randomItem = arr[Math.floor(Math.random() * arr.length)];
+            } while (randomItem === currentItem);
+            return randomItem;
+        }
+
+        // Determine which item is the source and randomize the others
+        const modalCategory = document.getElementById('modalCategory').innerText.trim().toLowerCase();
+
+        if (modalCategory === 'headwear') {
+            document.getElementById('modalTop').src = getRandomItem(topsOptions, currentModalTop);
+            document.getElementById('modalBottom').src = getRandomItem(bottomsOptions, currentModalBottom);
+            document.getElementById('modalShoes').src = getRandomItem(shoesOptions, currentModalShoes);
+        } else if (modalCategory === 'top' || modalCategory == 'tops') {
+            document.getElementById('modalHeadwear').src = getRandomItem(headwearOptions, currentModalHeadwear);
+            document.getElementById('modalBottom').src = getRandomItem(bottomsOptions, currentModalBottom);
+            document.getElementById('modalShoes').src = getRandomItem(shoesOptions, currentModalShoes);
+        } else if (modalCategory === 'bottom' || modalCategory == 'bottoms') {
+            document.getElementById('modalHeadwear').src = getRandomItem(headwearOptions, currentModalHeadwear);
+            document.getElementById('modalTop').src = getRandomItem(topsOptions, currentModalTop);
+            document.getElementById('modalShoes').src = getRandomItem(shoesOptions, currentModalShoes);
+        } else if (modalCategory === 'shoes') {
+            document.getElementById('modalHeadwear').src = getRandomItem(headwearOptions, currentModalHeadwear);
+            document.getElementById('modalTop').src = getRandomItem(topsOptions, currentModalTop);
+            document.getElementById('modalBottom').src = getRandomItem(bottomsOptions, currentModalBottom);
+        }
+    }
+
+    // Event listener for modal close button
+    document.querySelectorAll('.close').forEach(closeButton => {
+        closeButton.onclick = function() {
+            this.parentElement.parentElement.style.display = "none";
+        }
+    });
+
+    // Event listener for window click to close modal
+    window.onclick = function(event) {
+        if (event.target.className === 'modal') {
+            event.target.style.display = "none";
+        }
+    }
 </script>
 
+
+ 
+ 
+</div>
 
 </body>
 </html>
