@@ -3,9 +3,9 @@ import { getFirestore } from 'firebase/firestore';
 //Deleted key info for public github repo
 const firebaseConfig = {
   apiKey: "",
-  authDomain: "perfectfit-swiping.firebaseapp.com",
-  projectId: "perfectfit-swiping",
-  storageBucket: "perfectfit-swiping.appspot.com",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
   messagingSenderId: "",
   appId: "",
   measurementId: ""
